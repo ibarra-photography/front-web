@@ -1,8 +1,27 @@
-html,
-body {
+html {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
+
+  background-image: linear-gradient(
+    15deg,
+    hsl(262deg 4% 58%) 0%,
+    hsl(263deg 4% 55%) 10%,
+    hsl(263deg 4% 52%) 20%,
+    hsl(263deg 4% 49%) 30%,
+    hsl(264deg 4% 46%) 40%,
+    hsl(264deg 5% 43%) 50%,
+    hsl(265deg 4% 39%) 60%,
+    hsl(266deg 4% 35%) 70%,
+    hsl(268deg 4% 31%) 80%,
+    hsl(269deg 4% 28%) 90%,
+    hsl(270deg 3% 24%) 100%
+  );
+}
+body {
+  margin: 0;
+  padding: 0;
+  color: #fcf8ff;
 }
 
 a {
