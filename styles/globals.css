@@ -2,6 +2,7 @@ html {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
+  height: 100%;
 
   background-image: linear-gradient(
     15deg,
