@@ -1,0 +1,13 @@
+.photo-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px 5vw;
+  gap: 5px;
+  padding: 5px;
+
+  background: rgba(16, 18, 27, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+}
