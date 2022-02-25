@@ -1,12 +1,14 @@
 import Link from "next/link";
 import React, { Fragment } from "react";
 
+import styles from "./Navigation.module.css";
+
 const Navigation = () => {
   return (
-    <Fragment>
+    <div className={styles.links}>
       <Link href="/">Home</Link>
       <Link href="/gallery">Gallery</Link>
-    </Fragment>
+    </div>
   );
 };
 
