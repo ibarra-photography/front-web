@@ -11,3 +11,6 @@
   backdrop-filter: blur(2px);
   border-radius: 10px;
 }
+.gallery-container {
+  min-height: 100vh;
+}
