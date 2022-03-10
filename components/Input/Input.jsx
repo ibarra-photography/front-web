@@ -32,20 +32,12 @@ const Input = () => {
       }
     );
     console.log(res);
-    // console.log("POST");
   };
 
   return (
     <div>
       <h2>Uploads</h2>
       <input type="file" name="image" onChange={handleInput} />
-      {/* {uploadedImage && (
-        <img
-          alt="not fount"
-          width={"250px"}
-          src={URL.createObjectURL(uploadedImage)}
-        />
-      )} */}
       <input type="button" value="Submit" onClick={() => postImage()} />
     </div>
   );
