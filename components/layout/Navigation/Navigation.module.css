@@ -4,3 +4,8 @@
   justify-content: space-evenly;
   font-size: 2rem;
 }
+
+.activeLink {
+  /* color: #fed108; */
+  border-bottom: 2px solid #fed108;
+}
