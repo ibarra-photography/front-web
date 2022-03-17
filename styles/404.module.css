@@ -1,0 +1,28 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.header-container {
+  display: flex;
+  font-size: 5rem;
+}
+
+.status {
+  margin-right: 2rem;
+  padding-right: 2rem;
+  border-right: 1px solid #fed108;
+}
+
+.redirection {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+.link {
+  border-bottom: 1px solid #fed108;
+}
