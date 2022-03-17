@@ -22,7 +22,7 @@ const PhotoCardsGrid = () => {
         const blob = b64toBlob(photo.data);
         const blobUrl = URL.createObjectURL(blob);
         return (
-          <Button key={photo._id} path={`/${photo._id}`}>
+          <Button key={photo._id} path={`/gallery/${photo._id}`}>
             <PhotoCard key={photo._id} description="" link={blobUrl} title="" />
           </Button>
         );
