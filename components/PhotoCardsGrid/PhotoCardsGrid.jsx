@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 
+import Button from "../Button/Button";
 import PhotoCard from "../PhotoCard/PhotoCard";
 
 import fetchApiData from "../../services/fetchApiData";
@@ -21,7 +22,9 @@ const PhotoCardsGrid = () => {
         const blob = b64toBlob(photo.data);
         const blobUrl = URL.createObjectURL(blob);
         return (
-          <PhotoCard key={photo._id} description="" link={blobUrl} title="" />
+          <Button key={photo._id} path={`/${photo._id}`}>
+            <PhotoCard key={photo._id} description="" link={blobUrl} title="" />
+          </Button>
         );
       })}
       {!photos && <div>Loading...</div>}
