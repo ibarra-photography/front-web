@@ -5,6 +5,7 @@ html {
   font-family: "Noto Serif Display";
   min-height: 100vh;
   background-image: linear-gradient(15deg, #00084d, #2c4389);
+  overflow-x: hidden;
 }
 body {
   margin: 0;
@@ -27,4 +28,8 @@ h1 {
 h2 {
   font-weight: 300;
   font-size: 2rem;
+}
+
+img {
+  height: inherit;
 }
