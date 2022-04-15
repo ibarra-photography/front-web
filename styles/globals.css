@@ -34,10 +34,16 @@ img {
   height: inherit;
 }
 
-input {
+input,
+button {
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   font-family: "Noto Serif Display";
   color: #000000;
   padding: 6px;
+}
+
+button:active {
+  transform: scale(0.95);
+  transition: transform 0.3s ease-in;
 }

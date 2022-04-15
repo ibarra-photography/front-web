@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import axios from "axios";
 
+import styles from "./input.module.css";
+
 const Input = () => {
   const [uploadedImage, setUploadedImage] = useState("");
 
@@ -35,10 +37,12 @@ const Input = () => {
   };
 
   return (
-    <div>
+    <div className={styles.input}>
       <h2>Uploads</h2>
       <input type="file" name="image" onChange={handleInput} />
-      <input type="button" value="Submit" onClick={() => postImage()} />
+      <button onClick={() => postImage()} className={styles.submit}>
+        Submit
+      </button>
     </div>
   );
 };

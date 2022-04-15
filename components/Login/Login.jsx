@@ -23,12 +23,9 @@ const Login = () => {
       <input type="text" onChange={usernameHandler} />
       <h3>Password</h3>
       <input type="password" onChange={passwordHandler} />
-      <input
-        className={styles.submit}
-        type="button"
-        value="Submit"
-        onClick={submitHandler}
-      />
+      <button className={styles.submit} onClick={submitHandler}>
+        Submit
+      </button>
     </div>
   );
 };
