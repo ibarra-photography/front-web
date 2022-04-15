@@ -1,0 +1,55 @@
+.form {
+  border: 2px solid white;
+  color: #000000;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+
+.title {
+  font-weight: 400;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.comment {
+  height: 5rem;
+}
+
+.buttons {
+  margin: 2rem 5rem 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-send {
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 3px;
+  padding: 3px 25px;
+  background-color: #2c4389;
+  color: #fcf8ff;
+  cursor: pointer;
+}
+.button-send:hover {
+  background-color: #fed108;
+  color: #000000;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.button-cancel {
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 5px;
+  padding: 3px 25px;
+  background-color: #fcf8ff;
+  color: black;
+  cursor: pointer;
+}

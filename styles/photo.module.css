@@ -3,6 +3,7 @@
   width: 100vw;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 .photo-container {
   display: flex;
@@ -24,14 +25,38 @@
 
 .information {
   width: 30%;
-}
-
-.button-container {
-  margin-top: 50%;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.description {
+  margin-top: 0px;
+}
+.button-container {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  bottom: 15%;
+  gap: 3rem;
 }
 .go-back {
-  border: 1px solid #ffffff;
-  padding: 3px 5px;
+  border: 1px solid #fcf8ff;
+  padding: 3px 25px;
   border-radius: 5px;
+}
+.go-back:hover {
+  background-color: #fcf8ff;
+  color: #000000;
+  border-color: rgba(16, 18, 27, 0.4);
+}
+.request-button {
+  padding: 3px 25px;
+  border-radius: 5px;
+  border: 1px solid #fed108;
+  cursor: pointer;
+}
+.request-button:hover {
+  border-color: rgba(16, 18, 27, 0.4);
+  background-color: #fed108;
+  color: #000000;
 }
