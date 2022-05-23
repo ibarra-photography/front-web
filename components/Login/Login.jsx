@@ -11,19 +11,10 @@ import styles from "./login.module.css";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loginCredentials, setLoginCredentials] = useState();
-  const [response, setResponse] = useState();
 
   const loginCtx = useContext(LoginContext);
 
   const { logIn, setCredentials } = loginCtx;
-
-  useEffect(() => {
-    if (response?.response) {
-      setCredentials(loginCredentials);
-      logIn();
-    }
-  }, [response, logIn, setCredentials, loginCredentials]);
 
   const usernameHandler = (event) => {
     event.preventDefault();
@@ -36,21 +27,36 @@ const Login = () => {
 
   const submitHandler = async () => {
     const credentials = {
-      username: createHash("sha256").update(username).digest("hex"),
+      username: username,
       password: createHash("sha256").update(password).digest("hex"),
     };
-    setLoginCredentials(credentials);
-    const res = await authenticate(credentials);
-    setResponse(res);
+    try {
+      const res = await authenticate(credentials);
+      if (res.response.data.token) {
+        const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
+        setPassword("");
+        setUsername("");
+        setCredentials({ token: res.token, expirationDate: expirationDate });
+        logIn();
+      } else {
+        alert("Wrong username or password");
+        console.log("Error: ", res);
+        setPassword("");
+        setUsername("");
+      }
+    } catch (error) {
+      alert("Invalid username or password");
+      console.log(error);
+    }
   };
 
   return (
     <div className={styles.login}>
       <h2>Login</h2>
       <h3>Username</h3>
-      <input type="text" onChange={usernameHandler} />
+      <input type="text" onChange={usernameHandler} value={username} />
       <h3>Password</h3>
-      <input type="password" onChange={passwordHandler} />
+      <input type="password" onChange={passwordHandler} value={password} />
       <button className={styles.submit} onClick={submitHandler}>
         Submit
       </button>
