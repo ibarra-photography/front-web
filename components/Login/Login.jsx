@@ -34,9 +34,12 @@ const Login = () => {
       const res = await authenticate(credentials);
       if (res.response.data.token) {
         const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
+        setCredentials({
+          token: res.response.data.token,
+          expirationDate: expirationDate,
+        });
         setPassword("");
         setUsername("");
-        setCredentials({ token: res.token, expirationDate: expirationDate });
         logIn();
       } else {
         alert("Wrong username or password");
