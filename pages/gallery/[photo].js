@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { PhotoContext } from "../../store/photo-context";
 
 import { useRouter } from "next/router";
 
@@ -14,7 +15,9 @@ import { Fragment } from "react/cjs/react.production.min";
 const Photo = () => {
   const router = useRouter();
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [photos, setPhotos] = useState(null);
+  // const [photos, setPhotos] = useState(null);
+  const { photos, setPhotos } = React.useContext(PhotoContext);
+
   useEffect(() => {
     fetchApiData().then((response) => setPhotos(response));
   }, []);
@@ -35,8 +38,8 @@ const Photo = () => {
           photo.map((photo) => (
             <img
               key={photo.id}
-              src={URL.createObjectURL(b64toBlob(photo.data))}
-              alt=""
+              src={URL.createObjectURL(b64toBlob(photo.photo))}
+              alt={photo.title}
             />
           ))}
         {!photo && <p>Loading...</p>}
@@ -56,7 +59,8 @@ const Photo = () => {
         <div className={styles.information}>
           {!isFormOpen && (
             <Fragment>
-              <h1>Title</h1>
+              {!photo && <h1>Title</h1>}
+              {photo && <h1>{photo[0].title}</h1>}
               <p>
                 Some random Text: no conocere el miedo, el miedo mata a la
                 mente, el miedo es la pequeña muerte que conduce a la
