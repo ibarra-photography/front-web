@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { PhotoContext } from "../../store/photo-context";
 
 import Button from "../Button/Button";
@@ -10,29 +10,20 @@ import b64toBlob from "../../services/base64toBlob.js";
 
 const PhotoCardsGrid = () => {
   const [isLoading, setIsLoading] = useState("idle");
-  const { photos, setPhoto } = React.useContext(PhotoContext);
-
-  useEffect(() => {
-    getPhotos();
-  }, []);
-
+  const [photos, setPhotos] = useState([]);
   const getPhotos = async () => {
-    console.log("PhotoCTX", photos);
-    if (photos.length !== 0) {
-      setIsLoading("done");
-      return;
-    }
-    console.log("in");
     try {
       setIsLoading("pending");
-      const response = await fetchApiData();
-      setPhoto(response);
+      setPhotos(await fetchApiData());
       setIsLoading("done");
     } catch (error) {
       setIsLoading("error");
     }
   };
 
+  useEffect(() => {
+    getPhotos();
+  }, []);
   return (
     <Fragment>
       {isLoading === "done" &&
