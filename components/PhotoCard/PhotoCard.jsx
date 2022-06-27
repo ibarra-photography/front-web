@@ -5,7 +5,7 @@ import styles from "./photo-card.module.css";
 const PhotoCard = ({ link, title, description }) => {
   return (
     <div>
-      <img className={styles.image} src={link} alt={title} />
+      <img className={styles.image} src={link} alt={description} />
       <div className={styles.title}>{title}</div>
       <div className={styles.description}>{description}</div>
     </div>
