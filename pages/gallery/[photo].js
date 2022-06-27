@@ -3,8 +3,6 @@ import { Fragment } from "react/cjs/react.production.min";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-import { PhotoContext } from "../../store/photo-context";
-
 import Button from "../../components/Button/Button";
 
 import fetchApiData from "../../services/fetchApiData";
@@ -14,32 +12,40 @@ import styles from "./../../styles/photo.module.css";
 
 const Photo = () => {
   const router = useRouter();
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [photo, setPhoto] = useState();
-  const { photos, setPhotos } = React.useContext(PhotoContext);
+  const [photo, setPhoto] = useState({
+    _id: "",
+    photo: "",
+    title: "Title",
+    text: "text",
+  });
+  const [fetchingState, setFetchingState] = useState("idle");
 
   const getPhoto = async () => {
-    const response = await fetchApiData();
-    setPhotos(response);
+    setFetchingState("loading");
+    try {
+      const photos = await fetchApiData();
+      console.log("Photos_response: ", photos);
+      console.log(router.query.photo);
+      setPhoto(photos.filter((photo) => photo._id == router.query.photo)[0]);
+      setFetchingState("success");
+    } catch (error) {
+      setFetchingState("error");
+      console.log("Error fetching photos: ", error);
+    }
   };
+
+  console.log("PHOTOS: ", photo);
 
   useEffect(() => {
-    if (photos.length === 0 || photos === undefined) {
-      getPhoto();
-    } else {
-      const id = router.query.photo;
+    getPhoto();
+  }, [router.query.photo]);
 
-      const photo = photos?.filter((photo) => photo._id == id);
-      setPhoto(photo[0]);
-    }
-  }, [photos]);
-
-  const handleFormOpening = () => {
-    setIsFormOpen(true);
-  };
-  const handleFormClosing = () => {
-    setIsFormOpen(false);
-  };
+  // const handleFormOpening = () => {
+  //   setIsFormOpen(true);
+  // };
+  // const handleFormClosing = () => {
+  //   setIsFormOpen(false);
+  // };
 
   const renderPhoto = () => {
     return (
@@ -61,33 +67,30 @@ const Photo = () => {
 
   return (
     <div className={styles["photo-page"]}>
-      <div className={styles["photo-container"]}>
-        {renderPhoto()}
-        <div className={styles.information}>
-          {!isFormOpen && (
+      {fetchingState === "loading" && <p>LOADING</p>}
+      {fetchingState === "success" && (
+        <div className={styles["photo-container"]}>
+          {renderPhoto()}
+          <div className={styles.information}>
             <Fragment>
               {!photo && <h2>Title</h2>}
               {photo && <h2>{photo.title}</h2>}
-              <p>
-                Some random Text: no conocere el miedo, el miedo mata a la
-                mente, el miedo es la pequeña muerte que conduce a la
-                destruccion total.
-              </p>
+              {photo && <p>{photo.text}</p>}
               <div className={styles["button-container"]}>
                 <Button path="/gallery">
                   <div className={styles["go-back"]}>Gallery</div>
                 </Button>
-                <div
+                {/* <div
                   className={styles["request-button"]}
                   onClick={handleFormOpening}
                 >
                   Ask for it
-                </div>
+                </div> */}
               </div>
             </Fragment>
-          )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
