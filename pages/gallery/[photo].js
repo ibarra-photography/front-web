@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Fragment } from "react/cjs/react.production.min";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -20,25 +20,21 @@ const Photo = () => {
   });
   const [fetchingState, setFetchingState] = useState("idle");
 
-  const getPhoto = async () => {
+  const getPhoto = useCallback(async () => {
     setFetchingState("loading");
     try {
       const photos = await fetchApiData();
-      console.log("Photos_response: ", photos);
-      console.log(router.query.photo);
       setPhoto(photos.filter((photo) => photo._id == router.query.photo)[0]);
       setFetchingState("success");
     } catch (error) {
       setFetchingState("error");
       console.log("Error fetching photos: ", error);
     }
-  };
-
-  console.log("PHOTOS: ", photo);
+  }, [router.query.photo]);
 
   useEffect(() => {
     getPhoto();
-  }, [router.query.photo]);
+  }, [getPhoto]);
 
   // const handleFormOpening = () => {
   //   setIsFormOpen(true);
