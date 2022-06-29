@@ -62,3 +62,19 @@
   background-color: #fed108;
   color: #000000;
 }
+
+@media (max-width:650px) {
+    .photo-container{
+      flex-direction: column;
+      flex: 1;
+
+    }
+    .image{
+      width: 100%;
+      height: 100%;
+    }
+
+    .information{
+      flex: 1;
+    }
+}
