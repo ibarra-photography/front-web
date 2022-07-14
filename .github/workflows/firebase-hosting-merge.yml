@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: pwd
+      - run: ls -la
       - run: npm install
       - uses: actions/checkout@v2
       - run: npm run build
