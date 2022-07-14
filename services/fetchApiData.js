@@ -1,5 +1,5 @@
 const fetchApiData = async () => {
-  const endpoint = "http://localhost:4000/api/v1/photos";
+  const endpoint = `https://ibarra-photography.herokuapp.com/api/v1/photos`;
 
   const response = await fetch(endpoint);
   const data = await response.json();
