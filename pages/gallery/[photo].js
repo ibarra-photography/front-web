@@ -53,7 +53,6 @@ const Photo = () => {
             layout="intrinsic"
             width={650}
             height={500}
-            loader={"akamai"}
           />
         )}
 

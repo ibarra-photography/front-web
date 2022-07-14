@@ -13,7 +13,6 @@ const PhotoCard = ({ link, title, description }) => {
         layout="intrinsic"
         width={200}
         height={200}
-        loader={"akamai"}
       />
       <div className={styles.title}>{title}</div>
       <div className={styles.description}>{description}</div>
