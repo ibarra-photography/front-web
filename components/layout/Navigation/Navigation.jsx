@@ -30,6 +30,17 @@ const Navigation = () => {
           Gallery
         </a>
       </Link>
+      <Link href="/uploads">
+        <a
+          className={
+            router.pathname === "/uploads"
+              ? styles.activeLink
+              : styles.inactiveLinks
+          }
+        >
+          LogIn
+        </a>
+      </Link>
     </div>
   );
 };
