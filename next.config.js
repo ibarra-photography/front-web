@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
+const { PHASE_BUILD_SERVER } = require("next/constants");
 
 const nextConfig = {
   reactStrictMode: true,
@@ -7,9 +7,9 @@ const nextConfig = {
     loader: "custom",
   },
   env: {
-    API_URL: PHASE_DEVELOPMENT_SERVER
-      ? "http://localhost:4000"
-      : '"https://ibarra-photography.herokuapp.com/"',
+    API_URL: PHASE_BUILD_SERVER
+      ? "https://ibarra-photography.herokuapp.com/"
+      : "http://localhost:4000",
 
     // "https://ibarra-photography.herokuapp.com/",
   },
