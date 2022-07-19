@@ -15,18 +15,18 @@ const nextConfig = (phase) => {
       },
     };
   }
-};
-return {
-  reactStrictMode: true,
-  images: {
-    loader: "custom",
-  },
-  env: {
-    API_URL: "https://ibarra-photography.herokuapp.com/",
-    //  "http://localhost:4000",
+  return {
+    reactStrictMode: true,
+    images: {
+      loader: "custom",
+    },
+    env: {
+      API_URL: "https://ibarra-photography.herokuapp.com/",
+      //  "http://localhost:4000",
 
-    // "https://ibarra-photography.herokuapp.com/",
-  },
+      // "https://ibarra-photography.herokuapp.com/",
+    },
+  };
 };
 
 module.exports = nextConfig;
