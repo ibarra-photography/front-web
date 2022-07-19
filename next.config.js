@@ -21,7 +21,7 @@ const nextConfig = (phase) => {
       loader: "custom",
     },
     env: {
-      API_URL: "https://ibarra-photography.herokuapp.com/",
+      API_URL: "https://ibarra-photography.herokuapp.com",
       //  "http://localhost:4000",
 
       // "https://ibarra-photography.herokuapp.com/",
