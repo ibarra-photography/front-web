@@ -8,7 +8,7 @@ const authenticate = async (credentials) => {
   };
 
   const res = await (
-    await fetch("http://localhost:4000/api/v1/authenticate", options)
+    await fetch(`${process.env.API_URL}api/v1/authenticate`, options)
   ).json();
 
   return res;

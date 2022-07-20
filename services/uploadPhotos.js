@@ -5,7 +5,7 @@ const uploadPhoto = async (data) => {
   };
 
   const res = await (
-    await fetch("http://localhost:4000/api/v1/upload", options)
+    await fetch(`${process.env.API_URL}/api/v1/upload`, options)
   ).json();
 
   return res;
