@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 import Button from "../../components/Button/Button";
+import FullscreenPhoto from "components/FullscreenPhoto/FullscreenPhoto";
 
 import fetchApiData from "../../services/fetchApiData";
 import b64toBlob from "../../services/base64toBlob";
@@ -12,6 +13,7 @@ import styles from "./../../styles/photo.module.css";
 
 const Photo = () => {
   const router = useRouter();
+  const [isPhotoFullMode, setIsPhotoFullMode] = useState(false);
   const [photo, setPhoto] = useState({
     _id: "",
     photo: "",
@@ -19,6 +21,14 @@ const Photo = () => {
     text: "text",
   });
   const [fetchingState, setFetchingState] = useState("idle");
+
+  const onPhotoClickHandler = () => {
+    setIsPhotoFullMode(true);
+  };
+
+  const closePhotoHandler = () => {
+    setIsPhotoFullMode(false);
+  };
 
   const getPhoto = useCallback(async () => {
     setFetchingState("loading");
@@ -65,7 +75,10 @@ const Photo = () => {
     <div className={styles["photo-page"]}>
       {fetchingState === "loading" && <p>LOADING</p>}
       {fetchingState === "success" && (
-        <div className={styles["photo-container"]}>
+        <div
+          className={styles["photo-container"]}
+          onClick={onPhotoClickHandler}
+        >
           {renderPhoto()}
           <div className={styles.information}>
             <Fragment>
@@ -86,6 +99,13 @@ const Photo = () => {
             </Fragment>
           </div>
         </div>
+      )}
+      {isPhotoFullMode && (
+        <FullscreenPhoto
+          onClose={closePhotoHandler}
+          photoBlob={photo.photo}
+          title={photo.title}
+        />
       )}
     </div>
   );

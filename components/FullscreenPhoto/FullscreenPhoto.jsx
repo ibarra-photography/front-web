@@ -5,16 +5,16 @@ import b64toBlob from "services/base64toBlob";
 
 import styles from "./Fullscreen.module.css";
 
-const FullscreenPhoto = ({ photoBlob, title }) => {
+const FullscreenPhoto = ({ photoBlob, title, onClose }) => {
   return (
-    <div style={styles.background}>
+    <div className={styles.background} onClick={onClose}>
       <Image
-        // style={styles.photo}
+        className={styles.photo}
         src={URL.createObjectURL(b64toBlob(photoBlob))}
         alt={title}
-        layout="intrinsic"
-        width={1080}
-        height={1080}
+        layout="fill"
+        width={700}
+        height={475}
       />
     </div>
   );
