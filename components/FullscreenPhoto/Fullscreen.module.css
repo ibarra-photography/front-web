@@ -10,6 +10,17 @@
   overflow: hidden;
 }
 
+.close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  cursor: pointer;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  z-index: 1110;
+}
+
 .photo {
   object-fit: contain;
   position: relative;
