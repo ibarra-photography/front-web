@@ -6,11 +6,12 @@ import styles from "./photo-card.module.css";
 
 const PhotoCard = ({ link, title, description }) => {
   return (
-    <div>
+    <div className={styles["card-limit"]}>
       <Image
+        className={styles.image}
         src={link}
         alt={description}
-        layout="intrinsic"
+        layout="responsive"
         width={200}
         height={200}
       />

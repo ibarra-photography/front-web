@@ -1,5 +1,13 @@
 .image {
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
   overflow: hidden;
+  object-fit: cover;
+}
+.card-limit {
+  height: 300px;
+  overflow: hidden;
+  width: 300px;
+  display: block;
+  border-radius: 3px;
 }
