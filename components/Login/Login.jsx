@@ -25,7 +25,8 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  const submitHandler = async () => {
+  const submitHandler = async (event) => {
+    event.preventDefault();
     const credentials = {
       username: username,
       password: createHash("sha256").update(password).digest("hex"),
@@ -54,16 +55,15 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.login}>
+    <form className={styles.form} onSubmit={submitHandler}>
       <h2>Login</h2>
       <h3>Username</h3>
+
       <input type="text" onChange={usernameHandler} value={username} />
       <h3>Password</h3>
       <input type="password" onChange={passwordHandler} value={password} />
-      <button className={styles.submit} onClick={submitHandler}>
-        Submit
-      </button>
-    </div>
+      <button className={styles.submit}>Submit</button>
+    </form>
   );
 };
 
