@@ -6,7 +6,7 @@ import PhotoCard from "../PhotoCard/PhotoCard";
 import fetchApiData from "../../services/fetchApiData";
 
 import b64toBlob from "../../services/base64toBlob.js";
-import LoadingComponent from "components/LoadingComponent/LoadingComponent";
+import Skeleton from "components/Skeleton/Skeleton";
 
 const PhotoCardsGrid = () => {
   const [isLoading, setIsLoading] = useState("idle");
@@ -42,9 +42,18 @@ const PhotoCardsGrid = () => {
           );
         })}
       {isLoading === "pending" && (
-        <LoadingComponent style={{ width: "80vw" }}>
-          Loading...
-        </LoadingComponent>
+        <div
+          style={{
+            width: "fit-content",
+            display: "flex",
+            justifyContent: "center",
+            gap: "7px",
+          }}
+        >
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+        </div>
       )}
     </Fragment>
   );
