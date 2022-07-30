@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, Fragment } from "react";
 
 import LoginContext from "../../store/login-context";
 
@@ -6,8 +6,10 @@ import authenticate from "../../services/authenticate";
 
 import { createHash } from "crypto";
 
-import styles from "./login.module.css";
 import Spinner from "components/Spinner/Spinner";
+import Navigation from "components/layout/Navigation/Navigation";
+
+import styles from "./login.module.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -64,19 +66,22 @@ const Login = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={submitHandler}>
-      <h2>Login </h2>
-      <h3>Username</h3>
+    <Fragment>
+      <Navigation />
+      <form className={styles.form} onSubmit={submitHandler}>
+        <h2>Login </h2>
+        <h3>Username</h3>
 
-      <input type="text" onChange={usernameHandler} value={username} />
-      <h3>Password</h3>
-      <input type="password" onChange={passwordHandler} value={password} />
-      {loadingStatus === "loading" ? (
-        <Spinner />
-      ) : (
-        <button className={styles.submit}>Submit</button>
-      )}
-    </form>
+        <input type="text" onChange={usernameHandler} value={username} />
+        <h3>Password</h3>
+        <input type="password" onChange={passwordHandler} value={password} />
+        {loadingStatus === "loading" ? (
+          <Spinner />
+        ) : (
+          <button className={styles.submit}>Submit</button>
+        )}
+      </form>
+    </Fragment>
   );
 };
 
