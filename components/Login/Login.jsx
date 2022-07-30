@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 import LoginContext from "../../store/login-context";
 
@@ -11,6 +11,7 @@ import styles from "./login.module.css";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loadingStatus, setLoadingStatus] = useState("idle");
 
   const loginCtx = useContext(LoginContext);
 
@@ -27,28 +28,35 @@ const Login = () => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+    if (loadingStatus === "loading") return;
+
+    setLoadingStatus("loading");
     const credentials = {
-      username: username,
+      username,
       password: createHash("sha256").update(password).digest("hex"),
     };
+
     try {
-      const res = await authenticate(credentials);
-      if (res.response.data.token) {
+      const { response } = await authenticate(credentials);
+      const { token } = response.data;
+
+      if (token) {
         const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
-        setCredentials({
-          token: res.response.data.token,
-          expirationDate: expirationDate,
-        });
+
+        setCredentials({ token, expirationDate });
         setPassword("");
         setUsername("");
+
         logIn();
+        setLoadingStatus("success");
       } else {
+        setLoadingStatus("error");
         alert("Wrong username or password");
-        console.log("Error: ", res);
         setPassword("");
         setUsername("");
       }
     } catch (error) {
+      setLoadingStatus("error");
       alert("Invalid username or password");
       console.log(error);
     }
@@ -56,13 +64,19 @@ const Login = () => {
 
   return (
     <form className={styles.form} onSubmit={submitHandler}>
-      <h2>Login</h2>
+      <h2>Login </h2>
       <h3>Username</h3>
 
       <input type="text" onChange={usernameHandler} value={username} />
       <h3>Password</h3>
       <input type="password" onChange={passwordHandler} value={password} />
-      <button className={styles.submit}>Submit</button>
+      {loadingStatus === "loading" ? (
+        <div className={styles["loader-container"]}>
+          <span className={styles.loader}></span>
+        </div>
+      ) : (
+        <button className={styles.submit}>Submit</button>
+      )}
     </form>
   );
 };
