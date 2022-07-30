@@ -1,5 +1,4 @@
-import React, { Fragment, useCallback, useEffect, useState } from "react";
-import { PhotoContext } from "../../store/photo-context";
+import React, { Fragment, useEffect, useState } from "react";
 
 import Button from "../Button/Button";
 import PhotoCard from "../PhotoCard/PhotoCard";
