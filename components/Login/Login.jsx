@@ -7,6 +7,7 @@ import authenticate from "../../services/authenticate";
 import { createHash } from "crypto";
 
 import styles from "./login.module.css";
+import Spinner from "components/Spinner/Spinner";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -71,9 +72,7 @@ const Login = () => {
       <h3>Password</h3>
       <input type="password" onChange={passwordHandler} value={password} />
       {loadingStatus === "loading" ? (
-        <div className={styles["loader-container"]}>
-          <span className={styles.loader}></span>
-        </div>
+        <Spinner />
       ) : (
         <button className={styles.submit}>Submit</button>
       )}
