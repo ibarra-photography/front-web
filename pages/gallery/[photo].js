@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 
 import Button from "../../components/Button/Button";
 import FullscreenPhoto from "components/FullscreenPhoto/FullscreenPhoto";
+import LoadingComponent from "components/LoadingComponent/LoadingComponent";
+import Spinner from "components/Spinner/Spinner";
 
 import fetchApiData from "../../services/fetchApiData";
 import b64toBlob from "../../services/base64toBlob";
@@ -66,14 +68,18 @@ const Photo = () => {
           />
         )}
 
-        {!photo && <p>Loading...</p>}
+        {!photo && <LoadingComponent>Loading...</LoadingComponent>}
       </div>
     );
   };
 
   return (
     <div className={styles["photo-page"]}>
-      {fetchingState === "loading" && <p>LOADING</p>}
+      {fetchingState === "loading" && (
+        <LoadingComponent style={{ width: "100vw" }}>
+          <Spinner />
+        </LoadingComponent>
+      )}
       {fetchingState === "success" && (
         <div
           className={styles["photo-container"]}
