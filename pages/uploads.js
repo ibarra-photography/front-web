@@ -1,22 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import useIsLogged from "components/Hooks/useIsLogged";
 
 import Input from "../components/Input/Input";
 import Login from "../components/Login/Login";
 
-import LoginContext from "../store/login-context";
-
 import style from "../styles/uploads.module.css";
 
 const Uploads = () => {
-  const loginCtx = useContext(LoginContext);
-
-  const { isLogged, logOut, credentials } = loginCtx;
-
-  useEffect(() => {
-    if (credentials.expirationDate < Date.now()) {
-      logOut();
-    }
-  }, [credentials, logOut]);
+  const { logOut, isLogged } = useIsLogged();
 
   const logoutHandler = () => {
     logOut();
