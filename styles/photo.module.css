@@ -24,6 +24,21 @@
   cursor: pointer;
 }
 
+.image-component {
+  height: 300px;
+  width: 300px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.image-limit {
+  height: 600px;
+  overflow: hidden;
+  width: 600px;
+  display: block;
+  border-radius: 3px;
+}
+
 .information {
   flex: 1;
   display: grid;

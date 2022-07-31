@@ -48,24 +48,20 @@ const Photo = () => {
     getPhoto();
   }, [getPhoto]);
 
-  // const handleFormOpening = () => {
-  //   setIsFormOpen(true);
-  // };
-  // const handleFormClosing = () => {
-  //   setIsFormOpen(false);
-  // };
-
   const renderPhoto = () => {
     return (
       <div className={styles.image}>
         {photo && (
-          <Image
-            src={URL.createObjectURL(b64toBlob(photo.photo))}
-            alt={photo.title}
-            layout="intrinsic"
-            width={650}
-            height={500}
-          />
+          <div className={styles["image-limit"]}>
+            <Image
+              src={URL.createObjectURL(b64toBlob(photo.photo))}
+              alt={photo.title}
+              layout="responsive"
+              width={200}
+              height={200}
+              className={styles["image-component"]}
+            />
+          </div>
         )}
 
         {!photo && <LoadingComponent>Loading...</LoadingComponent>}
