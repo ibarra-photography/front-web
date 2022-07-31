@@ -42,18 +42,13 @@ const PhotoCardsGrid = () => {
           );
         })}
       {isLoading === "pending" && (
-        <div
-          style={{
-            width: "fit-content",
-            display: "flex",
-            justifyContent: "center",
-            gap: "7px",
-          }}
-        >
+        <Fragment>
           <Skeleton />
           <Skeleton />
           <Skeleton />
-        </div>
+          <Skeleton />
+          <Skeleton />
+        </Fragment>
       )}
     </Fragment>
   );
