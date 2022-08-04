@@ -1,40 +1,26 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
-import axios from "axios";
-import uploadPhoto from "../../services/uploadPhotos";
-
-import LoginContext from "../../store/login-context";
+import usePostImage from "components/Hooks/usePostImage";
 
 import styles from "./input.module.css";
-import authenticate from "../../services/authenticate";
+import Spinner from "components/Spinner/Spinner";
 
 const Input = () => {
   const [uploadedImage, setUploadedImage] = useState();
-  const [text, setText] = useState();
-  const [title, setTitle] = useState();
+  const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
+  const [postStatus, setPostStatus] = useState("idle");
 
-  const loginCtx = useContext(LoginContext);
+  const { uploadImage } = usePostImage();
 
-  const { credentials, logOut } = loginCtx;
-
-  console.log("Cred: ", credentials);
-
-  const handleInput = (event) => {
-    console.log(event.target.files[0]);
-
-    setUploadedImage(event.target.files[0]);
+  const postImage = async (event) => {
+    event.preventDefault();
+    console.log("Enter");
+    await uploadImage(uploadedImage, title, text);
   };
 
-  const formData = () => {
-    if (uploadedImage) {
-      const formData = new FormData();
-      formData.append("photo", uploadedImage);
-      formData.append("text", text);
-      formData.append("title", title);
-      formData.append("token", credentials.token);
-
-      return formData;
-    }
+  const handleInput = (event) => {
+    setUploadedImage(event.target.files[0]);
   };
 
   const handleTextInput = (event) => {
@@ -47,31 +33,22 @@ const Input = () => {
     setTitle(event.target.value);
   };
 
-  const postImage = async () => {
-    const photo = formData();
-    try {
-      const res = await uploadPhoto(photo);
-    } catch (error) {
-      console.log(error);
-      if (error.response.status === 401) {
-        logOut();
-      }
-    }
-  };
-
   return (
-    <div className={styles.input}>
+    <form className={styles.input} onSubmit={postImage}>
       <h2>Uploads</h2>
       <h3>Title</h3>
       <input type="text " name="Title" onChange={handleTitleInput} />
       <h3>Text</h3>
       <input type="text" onChange={handleTextInput} value={text} />
       <h3>File</h3>
-      <input type="file" name="image" onChange={handleInput} />
-      <button onClick={() => postImage()} className={styles.submit}>
-        Submit
-      </button>
-    </div>
+      <input
+        type="file"
+        name="image"
+        data-testid="file-upload"
+        onChange={handleInput}
+      />
+      <button className={styles.submit}>Submit</button>
+    </form>
   );
 };
 
