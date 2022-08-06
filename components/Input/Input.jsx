@@ -17,7 +17,10 @@ const Input = () => {
     event.preventDefault();
     console.log("Enter");
     const response = await uploadImage(uploadedImage, title, text);
-    if (response === "success") setLoadingStatus("success");
+    if (response === "success") {
+      document.getElementById("post-image").reset();
+      setLoadingStatus("success");
+    }
   };
 
   const handleInput = (event) => {
@@ -35,12 +38,12 @@ const Input = () => {
   };
 
   return (
-    <form className={styles.input} onSubmit={postImage}>
+    <form id="post-image" className={styles.input} onSubmit={postImage}>
       <h2>Uploads</h2>
       <h3>Title</h3>
       <input type="text " name="Title" onChange={handleTitleInput} />
       <h3>Text</h3>
-      <input type="text" onChange={handleTextInput} value={text} />
+      <input type="text" onChange={handleTextInput} />
       <h3>File</h3>
       <input
         type="file"
