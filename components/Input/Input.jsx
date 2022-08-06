@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import usePostImage from "components/Hooks/usePostImage";
+import Toast from "components/Toast/Toast";
 
 import styles from "./input.module.css";
 
@@ -38,21 +39,28 @@ const Input = () => {
   };
 
   return (
-    <form id="post-image" className={styles.input} onSubmit={postImage}>
-      <h2>Uploads</h2>
-      <h3>Title</h3>
-      <input type="text " name="Title" onChange={handleTitleInput} />
-      <h3>Text</h3>
-      <input type="text" onChange={handleTextInput} />
-      <h3>File</h3>
-      <input
-        type="file"
-        name="image"
-        data-testid="file-upload"
-        onChange={handleInput}
-      />
-      <button className={styles.submit}>Submit</button>
-    </form>
+    <>
+      <form id="post-image" className={styles.input} onSubmit={postImage}>
+        <h2>Uploads</h2>
+        <h3>Title</h3>
+        <input type="text " name="Title" onChange={handleTitleInput} />
+        <h3>Text</h3>
+        <input type="text" onChange={handleTextInput} />
+        <h3>File</h3>
+        <input
+          type="file"
+          name="image"
+          data-testid="file-upload"
+          onChange={handleInput}
+        />
+        <button className={styles.submit}>Submit</button>
+      </form>
+
+      <Toast>
+        {" "}
+        <p>Success</p>{" "}
+      </Toast>
+    </>
   );
 };
 
