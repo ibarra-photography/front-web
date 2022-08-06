@@ -17,7 +17,6 @@ const usePostImage = () => {
     formData.append("token", credentials.token);
 
     try {
-      console.log("formData", formData);
       await uploadPhoto(formData);
       setLoadingStatus("success");
     } catch (error) {
