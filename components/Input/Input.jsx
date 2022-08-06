@@ -3,20 +3,21 @@ import React, { useState } from "react";
 import usePostImage from "components/Hooks/usePostImage";
 
 import styles from "./input.module.css";
-import Spinner from "components/Spinner/Spinner";
 
 const Input = () => {
   const [uploadedImage, setUploadedImage] = useState();
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
-  const [postStatus, setPostStatus] = useState("idle");
+  const [loadingStatus, setLoadingStatus] = useState("idle");
 
   const { uploadImage } = usePostImage();
 
   const postImage = async (event) => {
+    setLoadingStatus("loading");
     event.preventDefault();
     console.log("Enter");
-    await uploadImage(uploadedImage, title, text);
+    const response = await uploadImage(uploadedImage, title, text);
+    if (response === "success") setLoadingStatus("success");
   };
 
   const handleInput = (event) => {
