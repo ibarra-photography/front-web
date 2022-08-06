@@ -22,11 +22,11 @@ const usePostImage = () => {
       setLoadingStatus("success");
       status = "success";
     } catch (error) {
+      status = "error";
       console.log("error", error);
       if (error?.response?.status === 401) {
         logOut();
         loadingStatus("error");
-        status = "error";
         throw new Error("Invalid credentials, login out");
       }
     }
