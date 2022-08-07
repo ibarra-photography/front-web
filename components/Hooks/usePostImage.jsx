@@ -7,9 +7,9 @@ import uploadPhoto from "services/uploadPhotos";
 const usePostImage = () => {
   const { credentials, logOut } = useContext(LoginContext);
   const [loadingStatus, setLoadingStatus] = useState("idle");
+  const [response, setResponse] = useState("");
 
   const uploadImage = async (photo, title, text) => {
-    let status = "";
     setLoadingStatus("loading");
     const formData = new FormData();
     formData.append("photo", photo);
@@ -18,11 +18,11 @@ const usePostImage = () => {
     formData.append("token", credentials.token);
 
     try {
-      await uploadPhoto(formData);
+      const response = await uploadPhoto(formData);
       setLoadingStatus("success");
-      status = "success";
+      setResponse("success loading");
     } catch (error) {
-      status = "error";
+      setResponse("error loading");
       console.log("error", error);
       if (error?.response?.status === 401) {
         logOut();
@@ -31,7 +31,7 @@ const usePostImage = () => {
       }
     }
 
-    return status;
+    return response;
   };
 
   return { uploadImage };

@@ -10,18 +10,16 @@ const Input = () => {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [loadingStatus, setLoadingStatus] = useState("idle");
+  const [toastMessage, setToastMessage] = useState("");
 
   const { uploadImage } = usePostImage();
 
   const postImage = async (event) => {
     setLoadingStatus("loading");
+    setToastMessage("Loading");
     event.preventDefault();
-    console.log("Enter");
     const response = await uploadImage(uploadedImage, title, text);
-    if (response === "success") {
-      document.getElementById("post-image").reset();
-      setLoadingStatus("success");
-    }
+    setToastMessage(response);
   };
 
   const handleInput = (event) => {
@@ -56,10 +54,12 @@ const Input = () => {
         <button className={styles.submit}>Submit</button>
       </form>
 
-      <Toast>
-        {" "}
-        <p>Success</p>{" "}
-      </Toast>
+      {toastMessage && (
+        <Toast>
+          {" "}
+          <p>{toastMessage}</p>{" "}
+        </Toast>
+      )}
     </>
   );
 };
