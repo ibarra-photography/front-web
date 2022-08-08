@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 import LoginContext from "store/login-context";
 
@@ -6,7 +6,6 @@ import uploadPhoto from "services/uploadPhotos";
 
 const usePostImage = () => {
   const { credentials, logOut } = useContext(LoginContext);
-  const [response, setResponse] = useState("");
 
   const uploadImage = async (photo, title, text) => {
     const formData = new FormData();
@@ -17,13 +16,12 @@ const usePostImage = () => {
 
     try {
       await uploadPhoto(formData);
-      setResponse("success loading");
+      return "Success loading";
     } catch (error) {
-      setResponse("error loading");
+      console.log("error in upload image: ", error);
       logOut();
+      return "error loading" + JSON.stringify(error);
     }
-
-    return response;
   };
 
   return { uploadImage };

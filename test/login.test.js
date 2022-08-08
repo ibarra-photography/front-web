@@ -43,7 +43,7 @@ describe("Post image", () => {
 
     fireEvent.click(submitButton);
 
-    const success = await screen.findAllByText(/Ok/i);
+    const success = await screen.findAllByText(/success/i);
 
     expect(success).toHaveLength(1);
   });

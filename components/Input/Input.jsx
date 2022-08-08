@@ -19,8 +19,8 @@ const Input = () => {
     event.preventDefault();
     setToastMessage("Loading");
     try {
-      await uploadImage(uploadedImage, title, text);
-      setToastMessage("Ok");
+      const response = await uploadImage(uploadedImage, title, text);
+      setToastMessage(response);
       form.current.reset();
     } catch (error) {
       setToastMessage("Error " + JSON.stringify(error));
