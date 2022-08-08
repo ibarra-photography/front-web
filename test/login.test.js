@@ -5,7 +5,6 @@ import userEvent from "@testing-library/user-event";
 import { LoginContextProvider } from "./../store/login-context";
 
 import Input from "../components/Input/Input.jsx";
-import usePostImage from "components/Hooks/usePostImage";
 
 const renderInput = () => {
   return render(
@@ -15,7 +14,7 @@ const renderInput = () => {
   );
 };
 
-describe("input", () => {
+describe("Post image", () => {
   it("should render input", () => {
     renderInput();
   });
@@ -35,17 +34,7 @@ describe("input", () => {
     expect(form).toBeDefined();
   });
 
-  it("should submit ", async () => {
-    renderInput();
-
-    const imageUpload = screen.getByTestId("file-upload");
-
-    expect(imageUpload).toBeDefined();
-  });
-});
-
-describe("usePost image", () => {
-  it("should render usePostImage ", async () => {
+  it("should render ok at usePostImage ", async () => {
     renderInput();
     const submitButton = screen.getByRole("button", { name: /Submit/i });
     const imageUpload = screen.getByTestId("file-upload");
@@ -54,9 +43,8 @@ describe("usePost image", () => {
 
     fireEvent.click(submitButton);
 
-    // const Error = await screen.findAllByText(/Error/i);
-    const success = await screen.findAllByText(/File uploaded/i);
+    const success = await screen.findAllByText(/Ok/i);
 
-    expect(loading).toHaveLength(1);
+    expect(success).toHaveLength(1);
   });
 });

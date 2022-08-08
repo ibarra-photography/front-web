@@ -6,11 +6,9 @@ import uploadPhoto from "services/uploadPhotos";
 
 const usePostImage = () => {
   const { credentials, logOut } = useContext(LoginContext);
-  const [loadingStatus, setLoadingStatus] = useState("idle");
   const [response, setResponse] = useState("");
 
   const uploadImage = async (photo, title, text) => {
-    setLoadingStatus("loading");
     const formData = new FormData();
     formData.append("photo", photo);
     formData.append("text", text);
@@ -18,17 +16,11 @@ const usePostImage = () => {
     formData.append("token", credentials.token);
 
     try {
-      const response = await uploadPhoto(formData);
-      setLoadingStatus("success");
+      await uploadPhoto(formData);
       setResponse("success loading");
     } catch (error) {
       setResponse("error loading");
-      console.log("error", error);
-      if (error?.response?.status === 401) {
-        logOut();
-        loadingStatus("error");
-        throw new Error("Invalid credentials, login out");
-      }
+      logOut();
     }
 
     return response;

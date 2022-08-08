@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import usePostImage from "components/Hooks/usePostImage";
 import Toast from "components/Toast/Toast";
@@ -9,17 +9,22 @@ const Input = () => {
   const [uploadedImage, setUploadedImage] = useState();
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
-  const [loadingStatus, setLoadingStatus] = useState("idle");
   const [toastMessage, setToastMessage] = useState("");
+
+  const form = useRef();
 
   const { uploadImage } = usePostImage();
 
   const postImage = async (event) => {
-    setLoadingStatus("loading");
-    setToastMessage("Loading");
     event.preventDefault();
-    const response = await uploadImage(uploadedImage, title, text);
-    setToastMessage(response);
+    setToastMessage("Loading");
+    try {
+      await uploadImage(uploadedImage, title, text);
+      setToastMessage("Ok");
+      form.current.reset();
+    } catch (error) {
+      setToastMessage("Error " + JSON.stringify(error));
+    }
   };
 
   const handleInput = (event) => {
@@ -38,7 +43,12 @@ const Input = () => {
 
   return (
     <>
-      <form id="post-image" className={styles.input} onSubmit={postImage}>
+      <form
+        ref={form}
+        id="post-image"
+        className={styles.input}
+        onSubmit={postImage}
+      >
         <h2>Uploads</h2>
         <h3>Title</h3>
         <input type="text " name="Title" onChange={handleTitleInput} />
@@ -54,12 +64,11 @@ const Input = () => {
         <button className={styles.submit}>Submit</button>
       </form>
 
-      {toastMessage && (
+      {toastMessage ? (
         <Toast>
-          {" "}
-          <p>{toastMessage}</p>{" "}
+          <p>{toastMessage}</p>
         </Toast>
-      )}
+      ) : null}
     </>
   );
 };
