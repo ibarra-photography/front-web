@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 
 import { LoginContextProvider } from "./../store/login-context";
+import { fetchApiData } from "../handlers/getApiData";
 
 import Input from "../components/Input/Input.jsx";
 
@@ -34,7 +35,12 @@ describe("Post image", () => {
     expect(form).toBeDefined();
   });
 
-  it("should render ok at usePostImage ", async () => {
+  test("fetch api data", async () => {
+    const res = await fetchApiData();
+    expect(res.status).toBe(202);
+  });
+
+  it("should render error at usePostImage ", async () => {
     renderInput();
     const submitButton = screen.getByRole("button", { name: /Submit/i });
     const imageUpload = screen.getByTestId("file-upload");

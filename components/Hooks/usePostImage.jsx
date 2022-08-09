@@ -15,8 +15,9 @@ const usePostImage = () => {
     formData.append("token", credentials.token);
 
     try {
-      await uploadPhoto(formData);
-      return "Success loading";
+      const res = await uploadPhoto(formData);
+      if (res.status === 202) return "Success loading";
+      return "No 202";
     } catch (error) {
       console.log("error in upload image: ", error);
       logOut();

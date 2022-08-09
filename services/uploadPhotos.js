@@ -3,10 +3,12 @@ const uploadPhoto = async (data) => {
     method: "POST",
     body: data,
   };
+  console.log("uploading on : ", process.env.API_URL);
+  const apiUrl = "http://localhost:4000";
 
-  const res = await (
-    await fetch(`${process.env.API_URL}/api/v1/upload`, options)
-  ).json();
+  const res = await fetch(`http://localhost:4000/api/v1/upload`, options);
+
+  console.log("res: ", res);
 
   return res;
 };
