@@ -1,50 +1,44 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 
-import { LoginContextProvider } from "./../store/login-context";
+import LoginForm from "../components/Login/LoginForm/LoginForm";
+import { LoginContextProvider } from "../store/login-context.js";
 
-import Input from "../components/Input/Input.jsx";
-
-const renderInput = () => {
-  return render(
+beforeEach(() => {
+  render(
     <LoginContextProvider>
-      <Input />
+      <LoginForm />
     </LoginContextProvider>
   );
-};
+});
 
-describe("Post image", () => {
-  it("should render input", () => {
-    renderInput();
+describe("Test login component", () => {
+  it("Render test component", () => {
+    expect(screen).not.toBe();
   });
 
-  it("should be a button", () => {
-    renderInput();
+  it("Should be Login title", () => {
+    const title = screen.getByText(/login/i);
+    const text = title.textContent;
 
-    const submit = screen.getByText(/submit/i);
-
-    expect(submit).toBeDefined();
+    expect(text).toContain("Login");
   });
 
-  it("should be a form", () => {
-    renderInput();
+  it("Should send login request", async () => {
+    const username = screen.getByLabelText(/username/i);
+    const password = screen.getByLabelText(/password/i);
+    const submit = screen.getByRole("button");
 
-    const form = screen.findByRole("form");
-    expect(form).toBeDefined();
-  });
+    userEvent.type(username, "admin");
+    userEvent.type(password, "pass");
 
-  it("should render error at usePostImage ", async () => {
-    renderInput();
-    const submitButton = screen.getByRole("button", { name: /Submit/i });
-    const imageUpload = screen.getByTestId("file-upload");
+    fireEvent.click(submit);
 
-    userEvent.type(imageUpload, "Photo");
+    const spinner = await screen.findByLabelText("spinner");
 
-    fireEvent.click(submitButton);
-
-    const success = await screen.findAllByText(/success/i);
-
-    expect(success).toHaveLength(1);
+    expect(spinner).toBeVisible();
+    expect(spinner).toContainHTML(
+      '<div aria-label="spinner" class="loader-container"><span class="loader" /></div>'
+    );
   });
 });
