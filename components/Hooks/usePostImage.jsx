@@ -16,12 +16,12 @@ const usePostImage = () => {
 
     try {
       const res = await uploadPhoto(formData);
-      if (res.status === 202) return "Success loading";
+      if (res.status === 200) return "Success uploading photo";
       return "No 202";
     } catch (error) {
       console.log("error in upload image: ", error);
       logOut();
-      return "error loading" + JSON.stringify(error);
+      return "error loading";
     }
   };
 

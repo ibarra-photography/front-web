@@ -3,7 +3,6 @@ import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 
 import { LoginContextProvider } from "./../store/login-context";
-import { fetchApiData } from "../handlers/getApiData";
 
 import Input from "../components/Input/Input.jsx";
 
@@ -33,11 +32,6 @@ describe("Post image", () => {
 
     const form = screen.findByRole("form");
     expect(form).toBeDefined();
-  });
-
-  test("fetch api data", async () => {
-    const res = await fetchApiData();
-    expect(res.status).toBe(202);
   });
 
   it("should render error at usePostImage ", async () => {
