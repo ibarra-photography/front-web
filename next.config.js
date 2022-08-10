@@ -38,6 +38,8 @@ const nextConfig = (phase) => {
     },
     env: {
       API_URL: "https://ibarra-photography.herokuapp.com",
+      NEXT_PUBLIC_API_MOCKING: "false",
+
       //  "http://localhost:4000",
 
       // "https://ibarra-photography.herokuapp.com/",
