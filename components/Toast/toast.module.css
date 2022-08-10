@@ -1,10 +1,37 @@
 .toast {
-  padding: 0.5rem 3rem;
-  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  position: relative;
   border-radius: 5px;
-  right: 50%;
-  transform: translate(50%);
-  top: 30px;
-  background-color: green;
+
+  background-color: rgba(33, 147, 33, 0.787);
   color: white;
+}
+
+.toast-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  position: absolute;
+  top: -60px;
+  animation: ToastAppear 4s;
+}
+
+@keyframes ToastAppear {
+  0% {
+    transform: translateY(0px);
+  }
+
+  10% {
+    transform: translateY(100px);
+  }
+
+  100% {
+    background-color: transparent;
+    color: transparent;
+    display: none;
+  }
 }

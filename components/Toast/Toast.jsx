@@ -4,8 +4,10 @@ import styles from "./toast.module.css";
 
 const Toast = ({ children }) => {
   return (
-    <div id="toast" data-testid="toast" className={styles.toast}>
-      {children}
+    <div className={styles["toast-container"]}>
+      <div id="toast" data-testid="toast" className={styles.toast}>
+        {children}
+      </div>
     </div>
   );
 };
