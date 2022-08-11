@@ -20,6 +20,18 @@
   animation: ToastAppear 4s;
 }
 
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  position: relative;
+  border-radius: 5px;
+
+  color: #fff;
+  background-color: rgba(147, 33, 37, 0.9);
+}
+
 @keyframes ToastAppear {
   0% {
     transform: translateY(0px);

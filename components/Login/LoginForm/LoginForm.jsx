@@ -56,8 +56,8 @@ const LoginForm = () => {
         )}
       </form>
       {loadingStatus === "error" ? (
-        <Toast style={{ backgroundColor: "red" }}>
-          <p>error</p>
+        <Toast className={"error"}>
+          <p>Incorrect username or password</p>
         </Toast>
       ) : null}
     </>
