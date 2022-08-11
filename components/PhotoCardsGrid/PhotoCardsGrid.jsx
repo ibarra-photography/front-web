@@ -48,6 +48,9 @@ const PhotoCardsGrid = () => {
           <Skeleton />
           <Skeleton />
           <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
         </Fragment>
       )}
     </Fragment>
