@@ -1,20 +1,13 @@
-import React, { useState, useContext } from "react";
-import { createHash } from "crypto";
-
-import LoginContext from "store/login-context";
-
-import authenticate from "services/authenticate";
+import React, { useState } from "react";
 
 import Spinner from "components/Spinner/Spinner";
 import styles from "./login.module.css";
+import { useLogin } from "./useLogin";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loadingStatus, setLoadingStatus] = useState("");
-
-  const loginCtx = useContext(LoginContext);
-  const { logIn, setCredentials } = loginCtx;
+  const { loadingStatus, loginHandler } = useLogin();
 
   const usernameHandler = (event) => {
     event.preventDefault();
@@ -27,38 +20,7 @@ const LoginForm = () => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    if (loadingStatus === "loading") return;
-
-    setLoadingStatus("loading");
-    const credentials = {
-      username,
-      password: createHash("sha256").update(password).digest("hex"),
-    };
-
-    try {
-      const { response } = await authenticate(credentials);
-      const { token } = response.data;
-
-      if (token) {
-        const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
-
-        setCredentials({ token, expirationDate });
-        setPassword("");
-        setUsername("");
-
-        logIn();
-        setLoadingStatus("success");
-      } else {
-        setLoadingStatus("error");
-        alert("Wrong username or password");
-        setPassword("");
-        setUsername("");
-      }
-    } catch (error) {
-      setLoadingStatus("error");
-      alert("Invalid username or password");
-      console.log(error);
-    }
+    await loginHandler(username, password);
   };
 
   return (
