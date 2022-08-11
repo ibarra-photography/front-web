@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import Spinner from "components/Spinner/Spinner";
 import styles from "./login.module.css";
 import { useLogin } from "./useLogin";
+import Toast from "components/Toast/Toast";
+import { useEffect } from "react";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { loadingStatus, loginHandler } = useLogin();
+  const loginForm = useRef();
+
+  useEffect(() => {
+    if (loadingStatus === "error") loginForm.current.reset();
+  }, [loadingStatus]);
 
   const usernameHandler = (event) => {
     event.preventDefault();
@@ -24,31 +31,36 @@ const LoginForm = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={submitHandler}>
-      <h2>Login </h2>
-      <h3>Username</h3>
+    <>
+      <form ref={loginForm} className={styles.form} onSubmit={submitHandler}>
+        <h2>Login </h2>
+        <h3>Username</h3>
 
-      <input
-        type="text"
-        name="username"
-        onChange={usernameHandler}
-        value={username}
-        aria-label="username"
-      />
-      <h3>Password</h3>
-      <input
-        type="password"
-        name="'password"
-        onChange={passwordHandler}
-        value={password}
-        aria-label="password"
-      />
-      {loadingStatus === "loading" ? (
-        <Spinner />
-      ) : (
-        <button className={styles.submit}>Submit</button>
-      )}
-    </form>
+        <input
+          type="text"
+          name="username"
+          onChange={usernameHandler}
+          aria-label="username"
+        />
+        <h3>Password</h3>
+        <input
+          type="password"
+          name="'password"
+          onChange={passwordHandler}
+          aria-label="password"
+        />
+        {loadingStatus === "loading" ? (
+          <Spinner />
+        ) : (
+          <button className={styles.submit}>Submit</button>
+        )}
+      </form>
+      {loadingStatus === "error" ? (
+        <Toast style={{ backgroundColor: "red" }}>
+          <p>error</p>
+        </Toast>
+      ) : null}
+    </>
   );
 };
 

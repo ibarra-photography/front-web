@@ -31,7 +31,6 @@ export const useLogin = () => {
       }
     } catch (error) {
       setLoadingStatus("error");
-      alert("Invalid username or password");
     }
   };
   return { loginHandler, loadingStatus };

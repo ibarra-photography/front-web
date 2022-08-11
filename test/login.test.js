@@ -41,4 +41,18 @@ describe("Test login component", () => {
       '<div aria-label="spinner" class="loader-container"><span class="loader" /></div>'
     );
   });
+
+  it("Should show error toast if is not successful", async () => {
+    const username = screen.getByLabelText(/username/i);
+    const password = screen.getByLabelText(/password/i);
+    const submit = screen.getByRole("button");
+
+    userEvent.type(username, "admin1");
+    userEvent.type(password, "pass1");
+    fireEvent.click(submit);
+
+    const errorToast = await screen.findAllByText(/error/i);
+
+    expect(errorToast).toBeDefined();
+  });
 });
