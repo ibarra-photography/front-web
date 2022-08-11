@@ -51,7 +51,7 @@ describe("Test login component", () => {
     userEvent.type(password, "pass1");
     fireEvent.click(submit);
 
-    const errorToast = await screen.findAllByText(/error/i);
+    const errorToast = await screen.findAllByText(/incorrect/i);
 
     expect(errorToast).toBeDefined();
   });

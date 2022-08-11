@@ -27,7 +27,6 @@ export const useLogin = () => {
         setLoadingStatus("success");
       } else {
         setLoadingStatus("error");
-        alert("Wrong username or password");
       }
     } catch (error) {
       setLoadingStatus("error");

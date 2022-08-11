@@ -1,10 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import Spinner from "components/Spinner/Spinner";
 import styles from "./login.module.css";
 import { useLogin } from "./useLogin";
 import Toast from "components/Toast/Toast";
-import { useEffect } from "react";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
