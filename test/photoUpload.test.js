@@ -34,12 +34,14 @@ describe("Post image", () => {
     expect(form).toBeDefined();
   });
 
-  it("should render error at usePostImage ", async () => {
+  it("should render success at sending fulfilled form ", async () => {
     renderInput();
     const submitButton = screen.getByRole("button", { name: /Submit/i });
     const imageUpload = screen.getByTestId("file-upload");
 
-    userEvent.type(imageUpload, "Photo");
+    const fakePhoto = new File(["hello"], "hello.png", { type: "image/png" });
+
+    await userEvent.upload(imageUpload, fakePhoto);
 
     fireEvent.click(submitButton);
 
