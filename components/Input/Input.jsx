@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import usePostImage from "components/Hooks/usePostImage";
 import Toast from "components/Toast/Toast";
@@ -11,20 +11,25 @@ const Input = () => {
   const [title, setTitle] = useState("");
   const [toastMessage, setToastMessage] = useState("");
 
+  const { uploadImage, loadingStatus } = usePostImage();
+
   const form = useRef();
 
-  const { uploadImage } = usePostImage();
+  useEffect(() => {
+    if (loadingStatus === "success") {
+      setToastMessage("Photo successfully loaded");
+      return;
+    }
+    setToastMessage("Error loading photo");
+  }, [loadingStatus]);
 
   const postImage = async (event) => {
     event.preventDefault();
     setToastMessage("Loading");
-    try {
-      const response = await uploadImage(uploadedImage, title, text);
-      setToastMessage(response);
-      form.current.reset();
-    } catch (error) {
-      setToastMessage("Error " + JSON.stringify(error));
-    }
+    await uploadImage(uploadedImage, title, text);
+    form.current.reset();
+    setTitle("");
+    setUploadedImage(null);
   };
 
   const handleInput = (event) => {
@@ -64,8 +69,8 @@ const Input = () => {
         <button className={styles.submit}>Submit</button>
       </form>
 
-      {toastMessage ? (
-        <Toast>
+      {loadingStatus === ("success" || "error") ? (
+        <Toast className={loadingStatus}>
           <p>{toastMessage}</p>
         </Toast>
       ) : null}

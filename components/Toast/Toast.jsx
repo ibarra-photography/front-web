@@ -9,7 +9,7 @@ const Toast = ({ children, style, className }) => {
         style={style}
         id="toast"
         data-testid="toast"
-        className={styles[("toast", className)]}
+        className={styles[className + ""]}
       >
         {children}
       </div>
