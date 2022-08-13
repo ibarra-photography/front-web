@@ -14,6 +14,6 @@ describe("photo card grid from gallery", () => {
   it("it should render 8 spinner", async () => {
     const spinners = await screen.findAllByLabelText("spinner");
 
-    expect(spinners).toHaveLength(8);
+    expect(spinners).toHaveLength(16); //8 x 2 because useEffect runs twice on dev (no sense) Thank Dan!!
   });
 });

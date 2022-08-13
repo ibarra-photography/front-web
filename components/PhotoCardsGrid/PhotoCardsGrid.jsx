@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useCallback } from "react";
 
 import Button from "../Button/Button";
 import PhotoCard from "../PhotoCard/PhotoCard";
@@ -11,7 +11,9 @@ import Skeleton from "components/Skeleton/Skeleton";
 const PhotoCardsGrid = () => {
   const [isLoading, setIsLoading] = useState("idle");
   const [photos, setPhotos] = useState([]);
-  const getPhotos = async () => {
+
+  const getPhotos = useCallback(async () => {
+    if (isLoading === "pending") return;
     try {
       setIsLoading("pending");
       setPhotos(await fetchApiData());
@@ -19,11 +21,12 @@ const PhotoCardsGrid = () => {
     } catch (error) {
       setIsLoading("error");
     }
-  };
+  }, []);
 
   useEffect(() => {
     getPhotos();
-  }, []);
+  }, [getPhotos]);
+
   return (
     <Fragment>
       {isLoading === "done"
@@ -42,7 +45,7 @@ const PhotoCardsGrid = () => {
             );
           })
         : null}
-      {isLoading === "pending" && (
+      {isLoading === "pending" ? (
         <Fragment>
           <Skeleton />
           <Skeleton />
@@ -53,7 +56,7 @@ const PhotoCardsGrid = () => {
           <Skeleton />
           <Skeleton />
         </Fragment>
-      )}
+      ) : null}
     </Fragment>
   );
 };
