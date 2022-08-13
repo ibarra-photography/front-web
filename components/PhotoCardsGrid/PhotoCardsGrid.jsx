@@ -26,21 +26,22 @@ const PhotoCardsGrid = () => {
   }, []);
   return (
     <Fragment>
-      {isLoading === "done" &&
-        photos.map((photo) => {
-          const blob = b64toBlob(photo.photo);
-          const blobUrl = URL.createObjectURL(blob);
-          return (
-            <Button key={photo._id} path={`/gallery/${photo._id}`}>
-              <PhotoCard
-                key={photo._id}
-                description=""
-                link={blobUrl}
-                title=""
-              />
-            </Button>
-          );
-        })}
+      {isLoading === "done"
+        ? photos.map((photo) => {
+            const blob = b64toBlob(photo.photo);
+            const blobUrl = URL.createObjectURL(blob);
+            return (
+              <Button key={photo._id} path={`/gallery/${photo._id}`}>
+                <PhotoCard
+                  key={photo._id}
+                  description=""
+                  link={blobUrl}
+                  title=""
+                />
+              </Button>
+            );
+          })
+        : null}
       {isLoading === "pending" && (
         <Fragment>
           <Skeleton />

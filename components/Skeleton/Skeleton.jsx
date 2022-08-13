@@ -5,7 +5,7 @@ import styles from "./skeleton.module.css";
 
 const Skeleton = () => {
   return (
-    <div className={styles.skeleton}>
+    <div aria-label="spinner" className={styles.skeleton}>
       <Spinner />
     </div>
   );

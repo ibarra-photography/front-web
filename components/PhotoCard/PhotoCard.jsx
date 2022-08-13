@@ -6,7 +6,7 @@ import styles from "./photo-card.module.css";
 
 const PhotoCard = ({ link, title, description }) => {
   return (
-    <div className={styles["card-limit"]}>
+    <div aria-label="image" className={styles["card-limit"]}>
       <Image
         className={styles.image}
         src={link}

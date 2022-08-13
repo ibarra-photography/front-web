@@ -3,7 +3,8 @@ const fetchApiData = async () => {
 
   const response = await fetch(endpoint);
   const data = await response.json();
-  return await data;
+  console.log("data", data);
+  return data;
 };
 
 export default fetchApiData;
