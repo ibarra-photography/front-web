@@ -22,7 +22,7 @@ export const useLogin = () => {
       const { token } = response.data;
       if (token) {
         const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
-        setCredentials({ token, expirationDate });
+        setCredentials({ token, expirationDate, username });
         logIn();
         setLoadingStatus("success");
       } else {

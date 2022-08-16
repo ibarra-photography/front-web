@@ -18,6 +18,7 @@ const usePostImage = () => {
     formData.append("text", text);
     formData.append("title", title);
     formData.append("token", credentials.token);
+    formData.append("username", credentials.username);
 
     try {
       const res = await uploadPhoto(formData);
