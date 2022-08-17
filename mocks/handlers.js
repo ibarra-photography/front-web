@@ -8,7 +8,10 @@ export const handlers = [
   }),
 
   rest.get("http://localhost:4000/api/v1/photos", (req, res, ctx) => {
-    return res(ctx.body(JSON.stringify(mockPhotos)));
+    const url = req.url;
+    const page = url.searchParams.get("page");
+    console.log("page", page);
+    return res(ctx.body(JSON.stringify({ photos: mockPhotos, page: page })));
   }),
 
   rest.get("http://localhost/undefined/api/v1/photos", (req, res, ctx) => {
