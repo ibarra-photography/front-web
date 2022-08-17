@@ -7,7 +7,7 @@ import FullscreenPhoto from "components/FullscreenPhoto/FullscreenPhoto";
 import LoadingComponent from "components/LoadingComponent/LoadingComponent";
 import Spinner from "components/Spinner/Spinner";
 
-import fetchApiData from "../../services/fetchApiData";
+import getPhotos from "../../services/getPhotos";
 import b64toBlob from "../../services/base64toBlob";
 
 import styles from "./../../styles/photo.module.css";
@@ -34,7 +34,7 @@ const Photo = () => {
   const getPhoto = useCallback(async () => {
     setFetchingState("loading");
     try {
-      const photos = await fetchApiData();
+      const photos = await getPhotos();
       setPhoto(photos.filter((photo) => photo._id == router.query.photo)[0]);
       setFetchingState("success");
     } catch (error) {
