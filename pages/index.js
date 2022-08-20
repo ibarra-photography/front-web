@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-
-import fetchApiData from "../services/fetchApiData";
+import React from "react";
 
 import Head from "next/head";
 import Navigation from "../components/layout/Navigation/Navigation";
@@ -10,8 +8,6 @@ import { GoogleFonts } from "nextjs-google-fonts/GoogleFonts";
 import styles from "../styles/home.module.css";
 
 export default function Home() {
-
-
   return (
     <div className={styles["home-container"]}>
       <Head>{GoogleFonts}</Head>

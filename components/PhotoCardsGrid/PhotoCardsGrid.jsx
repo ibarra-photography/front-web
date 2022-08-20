@@ -3,7 +3,7 @@ import React, { Fragment, useEffect, useState, useCallback } from "react";
 import Button from "../Button/Button";
 import PhotoCard from "../PhotoCard/PhotoCard";
 
-import fetchApiData from "../../services/fetchApiData";
+import getPhotos from "../../services/getPhotos";
 
 import b64toBlob from "../../services/base64toBlob.js";
 import Skeleton from "components/Skeleton/Skeleton";
@@ -11,12 +11,17 @@ import Skeleton from "components/Skeleton/Skeleton";
 const PhotoCardsGrid = () => {
   const [isLoading, setIsLoading] = useState("idle");
   const [photos, setPhotos] = useState([]);
+  const [page, setPage] = useState(1);
 
-  const getPhotos = useCallback(async () => {
+  const getPhotosHandler = useCallback(async () => {
     if (isLoading === "pending") return;
     try {
       setIsLoading("pending");
-      setPhotos(await fetchApiData());
+      const { photos: photosFromApi, page: pageFromApi } = await getPhotos(
+        page
+      );
+      setPhotos(photosFromApi);
+      setPage(pageFromApi);
       setIsLoading("done");
     } catch (error) {
       setIsLoading("error");
@@ -24,8 +29,8 @@ const PhotoCardsGrid = () => {
   }, []);
 
   useEffect(() => {
-    getPhotos();
-  }, [getPhotos]);
+    getPhotosHandler();
+  }, [getPhotosHandler]);
 
   return (
     <Fragment>
