@@ -11,6 +11,7 @@ import getPhotos from "../../services/getPhotos";
 import b64toBlob from "../../services/base64toBlob";
 
 import styles from "./../../styles/photo.module.css";
+import { getPhotoById } from "services/getPhotoById";
 
 const Photo = () => {
   const router = useRouter();
@@ -34,8 +35,8 @@ const Photo = () => {
   const getPhoto = useCallback(async () => {
     setFetchingState("loading");
     try {
-      const photos = await getPhotos();
-      setPhoto(photos.filter((photo) => photo._id == router.query.photo)[0]);
+      const photoFromApi = await getPhotoById(router.query.photo);
+      setPhoto(photoFromApi[0]);
       setFetchingState("success");
     } catch (error) {
       setFetchingState("error");
