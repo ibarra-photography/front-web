@@ -7,21 +7,20 @@ import getPhotos from "../../services/getPhotos";
 
 import b64toBlob from "../../services/base64toBlob.js";
 import Skeleton from "components/Skeleton/Skeleton";
+import Pagination from "components/Pagination/Pagination";
 
 const PhotoCardsGrid = () => {
   const [isLoading, setIsLoading] = useState("idle");
   const [photos, setPhotos] = useState([]);
-  const [page, setPage] = useState(1);
 
-  const getPhotosHandler = useCallback(async () => {
+  const getPhotosHandler = useCallback(async (pageTochange) => {
     if (isLoading === "pending") return;
     try {
       setIsLoading("pending");
-      const { photos: photosFromApi, page: pageFromApi } = await getPhotos(
-        page
+      const { data: photosFromApi, page: pageFromApi } = await getPhotos(
+        pageTochange
       );
       setPhotos(photosFromApi);
-      setPage(pageFromApi);
       setIsLoading("done");
     } catch (error) {
       setIsLoading("error");
@@ -29,7 +28,7 @@ const PhotoCardsGrid = () => {
   }, []);
 
   useEffect(() => {
-    getPhotosHandler();
+    getPhotosHandler(1);
   }, [getPhotosHandler]);
 
   return (
@@ -62,6 +61,7 @@ const PhotoCardsGrid = () => {
           <Skeleton />
         </Fragment>
       ) : null}
+      <Pagination pageHandler={getPhotosHandler} />
     </Fragment>
   );
 };
