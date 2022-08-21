@@ -22,6 +22,7 @@
   padding: 5px;
   flex: 2;
   cursor: pointer;
+  overflow: clip;
 }
 
 .image-component {
@@ -86,6 +87,7 @@
     width: 80%;
     flex: none;
     cursor: pointer;
+    overflow: clip;
   }
 }
 
