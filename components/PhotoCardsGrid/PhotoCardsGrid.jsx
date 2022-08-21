@@ -14,15 +14,19 @@ import styles from "./photo-cards-grid.module.css";
 const PhotoCardsGrid = () => {
   const [isLoading, setIsLoading] = useState("idle");
   const [photos, setPhotos] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
 
   const getPhotosHandler = useCallback(async (pageTochange) => {
     if (isLoading === "pending") return;
     try {
       setIsLoading("pending");
-      const { data: photosFromApi, page: pageFromApi } = await getPhotos(
-        pageTochange
-      );
+      const {
+        data: photosFromApi,
+        page: pageFromApi,
+        totalPages: totalPagesFromApi,
+      } = await getPhotos(pageTochange);
       setPhotos(photosFromApi);
+      setTotalPages(totalPagesFromApi);
       setIsLoading("done");
     } catch (error) {
       setIsLoading("error");
@@ -65,7 +69,7 @@ const PhotoCardsGrid = () => {
           </Fragment>
         ) : null}
       </div>
-      <Pagination pageHandler={getPhotosHandler} />
+      <Pagination pageHandler={getPhotosHandler} totalPages={totalPages} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import styles from "./pagination.module.css";
 
-const Pagination = ({ pageHandler }) => {
+const Pagination = ({ pageHandler, totalPages = 1 }) => {
   const [page, setPage] = useState(() => 1);
 
   const prevPageHandler = () => {
@@ -16,6 +16,7 @@ const Pagination = ({ pageHandler }) => {
   const nextPageHandler = () => {
     console.log("render...");
     setPage((currentPage) => {
+      if (currentPage === totalPages) return currentPage;
       pageHandler(currentPage + 1);
       return currentPage + 1;
     });
@@ -26,7 +27,7 @@ const Pagination = ({ pageHandler }) => {
       <button className={styles.button} onClick={prevPageHandler}>
         Prev
       </button>
-      {page}
+      {page}/{totalPages}
       <button className={styles.button} onClick={nextPageHandler}>
         Nex
       </button>
