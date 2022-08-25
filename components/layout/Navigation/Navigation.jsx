@@ -19,7 +19,7 @@ const Navigation = () => {
           Home
         </a>
       </Link>
-      <Link href="/gallery">
+      <Link href="/gallery?page=1">
         <a
           className={
             router.pathname === "/gallery"
