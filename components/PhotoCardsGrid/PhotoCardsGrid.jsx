@@ -21,7 +21,6 @@ const PhotoCardsGrid = () => {
   const getPhotosHandler = async () => {
     const page = query.page;
     if (!page) return;
-    console.log("page", page);
     if (isLoading === "pending") return;
     try {
       setIsLoading("pending");
@@ -36,7 +35,9 @@ const PhotoCardsGrid = () => {
   };
 
   useEffect(() => {
-    getPhotosHandler();
+    setTimeout(() => {
+      getPhotosHandler();
+    }, 300);
   }, [query]);
 
   return (

@@ -1,5 +1,5 @@
 import { useRouter } from "node_modules/next/router";
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./pagination.module.css";
 
@@ -7,7 +7,6 @@ const Pagination = ({ totalPages = 1 }) => {
   const { query, push, route } = useRouter();
 
   const page = query.page ? query.page : 1;
-  console.log("query", page, totalPages);
   const prevPageHandler = () => {
     if (page == 1) return;
     push(`${route}?page=${+page - 1}`);
