@@ -10,32 +10,31 @@ import Skeleton from "components/Skeleton/Skeleton";
 import Pagination from "components/Pagination/Pagination";
 
 import styles from "./photo-cards-grid.module.css";
+import { useRouter } from "node_modules/next/router";
 
 const PhotoCardsGrid = () => {
+  const { query } = useRouter();
   const [isLoading, setIsLoading] = useState("idle");
   const [photos, setPhotos] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
 
-  const getPhotosHandler = useCallback(async (pageTochange) => {
+  const getPhotosHandler = async () => {
     if (isLoading === "pending") return;
     try {
       setIsLoading("pending");
-      const {
-        data: photosFromApi,
-        page: pageFromApi,
-        totalPages: totalPagesFromApi,
-      } = await getPhotos(pageTochange);
+      const { data: photosFromApi, totalPages: totalPagesFromApi } =
+        await getPhotos(query.page);
       setPhotos(photosFromApi);
       setTotalPages(totalPagesFromApi);
       setIsLoading("done");
     } catch (error) {
       setIsLoading("error");
     }
-  }, []);
+  };
 
   useEffect(() => {
     getPhotosHandler(1);
-  }, [getPhotosHandler]);
+  }, [query]);
 
   return (
     <div className={styles["photo-card-grid-container"]}>
@@ -69,7 +68,7 @@ const PhotoCardsGrid = () => {
           </Fragment>
         ) : null}
       </div>
-      <Pagination pageHandler={getPhotosHandler} totalPages={totalPages} />
+      <Pagination totalPages={totalPages} />
     </div>
   );
 };

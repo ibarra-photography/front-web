@@ -32,6 +32,10 @@ const Photo = () => {
     setIsPhotoFullMode(false);
   };
 
+  const goToGalleryHandler = () => {
+    router.back();
+  };
+
   const getPhoto = useCallback(async () => {
     setFetchingState("loading");
     try {
@@ -88,9 +92,9 @@ const Photo = () => {
               {photo && <h2>{photo.title}</h2>}
               {photo && <p>{photo.text}</p>}
               <div className={styles["button-container"]}>
-                <Button path="/gallery">
+                <div onClick={goToGalleryHandler}>
                   <div className={styles["go-back"]}>Gallery</div>
-                </Button>
+                </div>
                 {/* <div
                   className={styles["request-button"]}
                   onClick={handleFormOpening}
