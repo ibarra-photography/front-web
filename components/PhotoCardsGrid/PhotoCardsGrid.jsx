@@ -19,11 +19,14 @@ const PhotoCardsGrid = () => {
   const [totalPages, setTotalPages] = useState(1);
 
   const getPhotosHandler = async () => {
+    const page = query.page;
+    if (!page) return;
+    console.log("page", page);
     if (isLoading === "pending") return;
     try {
       setIsLoading("pending");
       const { data: photosFromApi, totalPages: totalPagesFromApi } =
-        await getPhotos(query.page);
+        await getPhotos(page);
       setPhotos(photosFromApi);
       setTotalPages(totalPagesFromApi);
       setIsLoading("done");
@@ -33,7 +36,7 @@ const PhotoCardsGrid = () => {
   };
 
   useEffect(() => {
-    getPhotosHandler(1);
+    getPhotosHandler();
   }, [query]);
 
   return (
