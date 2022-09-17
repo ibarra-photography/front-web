@@ -34,10 +34,14 @@ const PhotoCardsGrid = () => {
     }
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      getPhotosHandler();
-    }, 300);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     getPhotosHandler();
+  //   }, 300);
+  // }, [query]);
+
+  React.useLayoutEffect(() => {
+    getPhotosHandler();
   }, [query]);
 
   return (
