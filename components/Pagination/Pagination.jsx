@@ -1,21 +1,10 @@
-import { useRouter } from "node_modules/next/router";
 import React from "react";
 
 import styles from "./pagination.module.css";
+import { usePagination } from "./usePagination";
 
 const Pagination = ({ totalPages = 1 }) => {
-  const { query, push, route } = useRouter();
-
-  const page = query.page ? query.page : 1;
-  const prevPageHandler = () => {
-    if (page == 1) return;
-    push(`${route}?page=${+page - 1}`);
-  };
-
-  const nextPageHandler = () => {
-    if (page == totalPages) return;
-    push(`${route}?page=${+page + 1}`);
-  };
+  const { page, nextPageHandler, prevPageHandler } = usePagination(totalPages);
 
   return (
     <div className={styles.pagination}>
