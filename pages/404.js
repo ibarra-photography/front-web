@@ -14,8 +14,8 @@ const NotFound = () => {
       <div className={styles.redirection}>
         <h2>
           Lost? You may want to go to &nbsp;
-          <Link href="/">
-            <a className={styles.link}>Home Page</a>
+          <Link className={styles.link} href="/">
+            Home Page
           </Link>
         </h2>
       </div>

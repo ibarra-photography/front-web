@@ -5,9 +5,7 @@ import Link from "next/link";
 const Button = (props) => {
   return (
     <div>
-      <Link href={props.path}>
-        <a>{props.children}</a>
-      </Link>
+      <Link href={props.path}>{props.children}</Link>
     </div>
   );
 };

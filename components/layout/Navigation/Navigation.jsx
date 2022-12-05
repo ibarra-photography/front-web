@@ -10,36 +10,33 @@ const Navigation = () => {
 
   return (
     <div className={styles.links}>
-      <Link href="/">
-        <a
-          className={
-            router.pathname === "/" ? styles.activeLink : styles.inactiveLinks
-          }
-        >
-          Home
-        </a>
+      <Link
+        className={
+          router.pathname === "/" ? styles.activeLink : styles.inactiveLinks
+        }
+        href="/"
+      >
+        Home
       </Link>
-      <Link href="/gallery?page=1">
-        <a
-          className={
-            router.pathname === "/gallery"
-              ? styles.activeLink
-              : styles.inactiveLinks
-          }
-        >
-          Gallery
-        </a>
+      <Link
+        className={
+          router.pathname === "/gallery"
+            ? styles.activeLink
+            : styles.inactiveLinks
+        }
+        href="/gallery?page=1"
+      >
+        Gallery
       </Link>
-      <Link href="/uploads">
-        <a
-          className={
-            router.pathname === "/uploads"
-              ? styles.activeLink
-              : styles.inactiveLinks
-          }
-        >
-          LogIn
-        </a>
+      <Link
+        className={
+          router.pathname === "/uploads"
+            ? styles.activeLink
+            : styles.inactiveLinks
+        }
+        href="/uploads"
+      >
+        LogIn
       </Link>
     </div>
   );
