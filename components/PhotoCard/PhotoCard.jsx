@@ -8,6 +8,7 @@ const PhotoCard = ({ link, title, description }) => {
   return (
     <div aria-label="image" className={styles["card-limit"]}>
       <Image
+        loader={link}
         className={styles.image}
         src={link}
         alt={description}
