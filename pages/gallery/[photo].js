@@ -52,12 +52,17 @@ const Photo = () => {
     getPhoto();
   }, [getPhoto]);
 
+  const myLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 75}`;
+  };
+
   const renderPhoto = () => {
     return (
       <div className={styles.image}>
         {photo && (
           <div className={styles["image-limit"]}>
             <Image
+              loader={myLoader}
               src={URL.createObjectURL(b64toBlob(photo.photo))}
               alt={photo.title}
               layout="responsive"
