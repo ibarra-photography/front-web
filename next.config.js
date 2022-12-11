@@ -11,7 +11,7 @@ const nextConfig = (phase) => {
       },
       env: {
         API_URL: "http://localhost:4000",
-        NEXT_PUBLIC_API_MOCKING: "true",
+        NEXT_PUBLIC_API_MOCKING: "false",
 
         // "https://ibarra-photography.herokuapp.com/",
       },
@@ -25,7 +25,7 @@ const nextConfig = (phase) => {
       },
       env: {
         API_URL: "http://localhost:4000",
-        NEXT_PUBLIC_API_MOCKING: "true",
+        NEXT_PUBLIC_API_MOCKING: "false",
 
         // "https://ibarra-photography.herokuapp.com/",
       },
