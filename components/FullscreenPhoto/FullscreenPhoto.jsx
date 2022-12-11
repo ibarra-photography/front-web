@@ -17,11 +17,9 @@ const FullscreenPhoto = ({ photoBlob, title, onClose }) => {
       <Image
         alt={title}
         className={styles.photo}
+        layout="fill"
         loader={myLoader}
         src={URL.createObjectURL(b64toBlob(photoBlob))}
-        layout="fill"
-        // width={700}
-        // height={475}
       />
     </div>
   );
