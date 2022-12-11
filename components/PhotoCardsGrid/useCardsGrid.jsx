@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "node_modules/next/router";
 
 import getPhotos from "services/getPhotos";
