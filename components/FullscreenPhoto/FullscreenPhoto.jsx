@@ -15,10 +15,10 @@ const FullscreenPhoto = ({ photoBlob, title, onClose }) => {
     <div className={styles.background} onClick={onClose}>
       <MdClose className={styles.close} onClick={onClose} />
       <Image
-        loader={myLoader}
-        className={styles.photo}
-        src={URL.createObjectURL(b64toBlob(photoBlob))}
         alt={title}
+        className={styles.photo}
+        loader={myLoader}
+        src={URL.createObjectURL(b64toBlob(photoBlob))}
         layout="fill"
         // width={700}
         // height={475}
