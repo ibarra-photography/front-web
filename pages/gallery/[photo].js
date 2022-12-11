@@ -2,12 +2,10 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-import Button from "../../components/Button/Button";
 import FullscreenPhoto from "components/FullscreenPhoto/FullscreenPhoto";
 import LoadingComponent from "components/LoadingComponent/LoadingComponent";
 import Spinner from "components/Spinner/Spinner";
 
-import getPhotos from "../../services/getPhotos";
 import b64toBlob from "../../services/base64toBlob";
 
 import styles from "./../../styles/photo.module.css";
@@ -62,13 +60,13 @@ const Photo = () => {
         {photo && (
           <div className={styles["image-limit"]}>
             <Image
+              alt={photo.title}
+              className={styles["image-component"]}
+              height={200}
+              layout="responsive"
               loader={myLoader}
               src={URL.createObjectURL(b64toBlob(photo.photo))}
-              alt={photo.title}
-              layout="responsive"
               width={200}
-              height={200}
-              className={styles["image-component"]}
             />
           </div>
         )}
@@ -92,22 +90,14 @@ const Photo = () => {
         >
           {renderPhoto()}
           <div className={styles.information}>
-            <>
-              {!photo && <h2>Title</h2>}
-              {photo && <h2>{photo.title}</h2>}
-              {photo && <p>{photo.text}</p>}
-              <div className={styles["button-container"]}>
-                <div onClick={goToGalleryHandler}>
-                  <div className={styles["go-back"]}>Gallery</div>
-                </div>
-                {/* <div
-                  className={styles["request-button"]}
-                  onClick={handleFormOpening}
-                >
-                  Ask for it
-                </div> */}
+            {!photo && <h2>Title</h2>}
+            {photo && <h2>{photo.title}</h2>}
+            {photo && <p>{photo.text}</p>}
+            <div className={styles["button-container"]}>
+              <div onClick={goToGalleryHandler}>
+                <div className={styles["go-back"]}>Gallery</div>
               </div>
-            </>
+            </div>
           </div>
         </div>
       )}
