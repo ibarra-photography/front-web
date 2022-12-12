@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import { createHash } from "crypto";
 
 import LoginContext from "store/login-context";
@@ -9,6 +9,27 @@ export const useLogin = () => {
   const [loadingStatus, setLoadingStatus] = useState("idle");
   const loginCtx = useContext(LoginContext);
   const { logIn, setCredentials } = loginCtx;
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const loginForm = useRef();
+
+  useEffect(() => {
+    if (loadingStatus === "error") loginForm.current.reset();
+  }, [loadingStatus]);
+
+  const usernameHandler = (event) => {
+    event.preventDefault();
+    setUsername(event.target.value);
+  };
+  const passwordHandler = (event) => {
+    event.preventDefault();
+    setPassword(event.target.value);
+  };
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    await loginHandler(username, password);
+  };
 
   const loginHandler = async (username, password) => {
     if (loadingStatus === "loading") return;
@@ -32,5 +53,11 @@ export const useLogin = () => {
       setLoadingStatus("error");
     }
   };
-  return { loginHandler, loadingStatus };
+  return {
+    loadingStatus,
+    usernameHandler,
+    passwordHandler,
+    submitHandler,
+    loginForm,
+  };
 };
