@@ -3,7 +3,12 @@ import styled from "styled-components";
 const HomePageContainer = styled("div")`
   display: flex;
   font-family: "Cormorant Garamond", serif;
-  color: white;
+  margin: 3rem;
+  margin-top: 4rem;
 `;
 
-export const HomePageStyles = { HomePageContainer };
+const Title = styled("h1")`
+  font-size: 3rem;
+`;
+
+export const HomePageStyles = { HomePageContainer, Title };

@@ -1,4 +1,5 @@
 import React from "react";
+import { ThemeProvider } from "styled-components";
 
 import { Cormorant_Garamond } from "@next/font/google";
 
@@ -8,8 +9,10 @@ const font = Cormorant_Garamond({ weight: ["300"] });
 
 export const HomePage = () => {
   return (
-    <HomePageStyles.HomePageContainer className={font.className}>
-      Ibarra Photography
-    </HomePageStyles.HomePageContainer>
+    <ThemeProvider theme={{}}>
+      <HomePageStyles.HomePageContainer className={font.className}>
+        <HomePageStyles.Title>Ibarra Photography</HomePageStyles.Title>
+      </HomePageStyles.HomePageContainer>
+    </ThemeProvider>
   );
 };
