@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    appDir: true,
+    appDir: true
   },
-}
+  env: {
+    API_URL: 'http://localhost:4000'
+  }
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
