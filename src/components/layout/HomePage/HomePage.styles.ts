@@ -12,6 +12,7 @@ const Title = styled('h1')`
   font-size: 3.5rem;
   margin-bottom: 2rem;
   letter-spacing: 5px;
+  border-bottom: 1px solid;
 `;
 
 export const HomePageStyles = { HomePageContainer, Title };
