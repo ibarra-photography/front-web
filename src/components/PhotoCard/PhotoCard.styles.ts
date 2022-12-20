@@ -5,7 +5,7 @@ const PhotoCardContainer = styled('div')`
   overflow: hidden;
   width: 300px;
   display: block;
-  border-radius: 3px;
+  border-radius: 1px;
 
   .image {
     height: 300px;
