@@ -4,6 +4,7 @@ import Image, { ImageLoader } from 'next/image';
 
 import { b64toBlob } from 'application/utils/base64toBlob';
 
+import { PhotoCardStyles } from './PhotoCard.styles';
 interface Props {
   link: string;
   title: string;
@@ -18,8 +19,8 @@ export const PhotoCard = ({ link, title, description }: Props) => {
     return `${src}?w=${width}&q=${quality || 100}`;
   };
   return (
-    <div aria-label="image">
-      <Image loader={myLoader} src={src} alt={description} layout="fix" width={200} height={200} />
-    </div>
+    <PhotoCardStyles.PhotoCardContainer aria-label="image">
+      <Image className="image" loader={myLoader} src={src} alt={description} layout="fix" width={200} height={200} />
+    </PhotoCardStyles.PhotoCardContainer>
   );
 };
