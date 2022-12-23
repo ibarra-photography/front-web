@@ -20,7 +20,7 @@ export const PhotoCard = ({ link, title, description }: Props) => {
   };
   return (
     <PhotoCardStyles.PhotoCardContainer aria-label="image">
-      <Image className="image" loader={myLoader} src={src} alt={description} layout="fix" width={200} height={200} />
+      <Image className="image" loader={myLoader} src={src} alt={description} width={200} height={200} />
     </PhotoCardStyles.PhotoCardContainer>
   );
 };
