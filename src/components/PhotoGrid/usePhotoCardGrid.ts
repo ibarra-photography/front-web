@@ -13,7 +13,7 @@ const endpoint = new URL(`${process.env.API_URL}/api/v1/photos`);
 endpoint.searchParams.append('page', String(1));
 
 export const usePhotoCardGrid = () => {
-  const { fetcher, fetchingStatus, response } = useFetch();
+  const { fetcher, fetchingStatus, response } = useFetch<PhotoData>();
 
   const [photoData, setPhotoData] = useState<ApiPhoto[]>([]);
 
