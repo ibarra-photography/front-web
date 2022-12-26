@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "next build",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx|html)\"",
     "check-format": "prettier --ignore-path .gitignore --list-different \"**/*.+(js|json|ts|tsx|html)\"",
     "lint:fix": "eslint --ignore-path .gitignore . --fix",
