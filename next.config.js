@@ -37,7 +37,7 @@ const nextConfig = (phase) => {
       loader: "custom",
     },
     env: {
-      API_URL: "https://ibarra-photography.herokuapp.com",
+      API_URL: "https://backend-production-43ba.up.railway.app",
       NEXT_PUBLIC_API_MOCKING: "false",
 
       //  "http://localhost:4000",
