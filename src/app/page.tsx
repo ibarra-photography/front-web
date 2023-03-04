@@ -1,6 +1,6 @@
 'use client';
-import HomePage from 'components/layout/HomePage';
+import LandingPage from 'components/layout/LandingPage';
 
 export default function Home() {
-  return <HomePage />;
+  return <LandingPage />;
 }
