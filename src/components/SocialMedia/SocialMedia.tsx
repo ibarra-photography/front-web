@@ -2,11 +2,11 @@ import React from 'react';
 
 import { FaInstagram, FaTwitter, FaTelegram } from 'react-icons/fa';
 
-import { SocialMediaStyles } from './SocialMedia.styles';
+import SocialMediaStyles from './SocialMedia.module.css';
 
 export const SocialMedia = () => {
   return (
-    <SocialMediaStyles.SocialMediaContainer>
+    <div className={SocialMediaStyles.socialMediaContainer}>
       <div>
         <FaInstagram />
       </div>
@@ -16,6 +16,6 @@ export const SocialMedia = () => {
       <div>
         <FaTelegram />
       </div>
-    </SocialMediaStyles.SocialMediaContainer>
+    </div>
   );
 };

@@ -2,20 +2,20 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import { LandingPageStyles } from './LandingPage.styles';
+import LandingPageStyles from './LandingPage.module.css';
 
 import landingPageImg from 'domain/media/img/landing-page.jpg';
 import LandingPageInformation from 'components/LandingPageInformation';
 
 export const LandingPage = () => {
   return (
-    <LandingPageStyles.LandingPageWrapper>
-      <LandingPageStyles.ImageContainer>
-        <Image src={landingPageImg} fill className="landing-image" alt={''} />
-      </LandingPageStyles.ImageContainer>
-      <LandingPageStyles.InformationContainer>
+    <div className={LandingPageStyles.landingPageWrapper}>
+      <div className={LandingPageStyles.imageContainer}>
+        <Image src={landingPageImg} fill className={LandingPageStyles.landingImage} alt={''} />
+      </div>
+      <div className={LandingPageStyles.informationContainer}>
         <LandingPageInformation />
-      </LandingPageStyles.InformationContainer>
-    </LandingPageStyles.LandingPageWrapper>
+      </div>
+    </div>
   );
 };

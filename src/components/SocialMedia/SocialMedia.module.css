@@ -1,0 +1,8 @@
+.socialMediaContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex: 1;
+  height: 100%;
+}
