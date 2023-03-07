@@ -27,12 +27,12 @@ export function LandingPageInformation() {
         esse delectus nemo dolor repellat quod totam dolorem, cupiditate molestiae est eaque ut accusamus a reiciendis! Laudantium totam magnam
         corrupti delectus in!
       </p>
-      <div className={LandingPageInformationStyles.news}>
+      <h3 className={LandingPageInformationStyles.news}>
         Prints available soon!
         <Link href={'notify-me/prints'} className={LandingPageInformationStyles.notifyMe}>
           Notify me
         </Link>
-      </div>
+      </h3>
       <p className={LandingPageInformationStyles.socialMedia}>
         <SocialMedia />
       </p>
