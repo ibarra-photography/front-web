@@ -1,0 +1,9 @@
+.navigationContainer {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+.link {
+  text-decoration: none;
+  color: white;
+}

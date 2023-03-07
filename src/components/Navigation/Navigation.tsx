@@ -2,20 +2,20 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { NavigationStyles } from './Navigation.styles';
+import NavigationStyles from './Navigation.module.css';
 
 export const Navigation = () => {
   return (
-    <NavigationStyles.NavigationContainer>
-      <Link className="link" href={'/gallery'}>
+    <nav className={NavigationStyles.navigationContainer}>
+      <Link className={NavigationStyles.link} href={'/gallery'}>
         Gallery
       </Link>
-      <Link className="link" href={'/login'}>
+      <Link className={NavigationStyles.link} href={'/login'}>
         Login
       </Link>
-      <Link className="link" href={'/register'}>
+      <Link className={NavigationStyles.link} href={'/register'}>
         SignIn
       </Link>
-    </NavigationStyles.NavigationContainer>
+    </nav>
   );
 };
