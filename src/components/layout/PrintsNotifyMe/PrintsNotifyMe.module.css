@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100vh;
+  padding-top: 10%;
+  align-items: center;
+  background-image: linear-gradient(to right top, #252527, #2a2a2b, #2f2f30, #343434, #393939);
+  color: #f2f2f2;
+  gap: 3rem;
+}
+
+.title {
+  font-size: 4rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
