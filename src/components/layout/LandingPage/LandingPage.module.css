@@ -8,11 +8,50 @@
   flex: 2;
   overflow: hidden;
   position: relative;
+  z-index: -10;
 }
 
 .landingImage {
   overflow: hidden;
   object-fit: cover;
+  z-index: -10;
+}
+
+.title {
+  padding: 3rem 0 0 5rem;
+  position: absolute;
+  font-size: 6.5rem;
+
+  background-image: linear-gradient(
+    0deg,
+    hsl(33deg 81% 63%) 0%,
+    hsl(32deg 81% 67%) 17%,
+    hsl(32deg 81% 71%) 31%,
+    hsl(31deg 81% 74%) 41%,
+    hsl(30deg 80% 78%) 47%,
+    hsl(30deg 77% 81%) 52%,
+    hsl(29deg 71% 84%) 57%,
+    hsl(29deg 61% 88%) 66%,
+    hsl(28deg 42% 91%) 81%,
+    hsl(0deg 0% 94%) 100%
+  );
+
+  /* background-image: linear-gradient(
+    0deg,
+    hsl(240deg 1% 68%) 0%,
+    hsl(240deg 1% 71%) 17%,
+    hsl(240deg 1% 74%) 31%,
+    hsl(240deg 1% 77%) 41%,
+    hsl(240deg 1% 79%) 47%,
+    hsl(240deg 1% 82%) 52%,
+    hsl(240deg 1% 85%) 57%,
+    hsl(240deg 1% 88%) 66%,
+    hsl(240deg 1% 91%) 81%,
+    hsl(0deg 0% 94%) 100%
+  ); */
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .informationContainer {
