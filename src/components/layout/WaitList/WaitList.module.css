@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 1rem;
+  padding-top: 30vh;
+}
+
+.form {
+  max-width: 20rem;
+  width: 100%;
+  min-width: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form input {
+  max-width: 20rem;
+  min-width: 10rem;
+}
+
+.form label {
+  font-size: 1.5rem;
+}
+
+.submitContainer {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
