@@ -13,7 +13,7 @@ export const Navigation = () => {
       <Link className={NavigationStyles.link} href={'/login'}>
         Login
       </Link>
-      <Link className={NavigationStyles.link} href={'/register'}>
+      <Link className={NavigationStyles.link} href={'/sign-in/wait-list'}>
         SignIn
       </Link>
     </nav>

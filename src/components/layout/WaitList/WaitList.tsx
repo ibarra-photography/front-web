@@ -1,3 +1,5 @@
+import Navigation from 'components/Navigation';
+import Link from 'next/link';
 import WaitListStyles from './WaitList.module.css';
 
 export const WaitList = () => {
@@ -12,6 +14,7 @@ export const WaitList = () => {
           <button>Send</button>
         </div>
       </form>
+      <Link href={'/'}> Go to home page</Link>
     </div>
   );
 };
