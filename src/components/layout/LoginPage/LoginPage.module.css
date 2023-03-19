@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 6rem;
+  padding: 1rem;
+  padding-top: 10vh;
+}
+
+.form {
+  display: flex;
+  gap: 3rem;
+  flex-direction: column;
+  width: 100%;
+  max-width: 30rem;
+  min-width: 20rem;
+}
+
+.form span {
+  display: flex;
+  flex-direction: column;
+  min-width: 20rem;
+  width: 100%;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
