@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import LandingPageStyles from './LandingPage.module.css';
 
-import landingPageImg from 'domain/media/img/landing-page.jpg';
+import landingPageImg from '../../../../public/media/img/landing-page.jpg';
 import LandingPageInformation from 'components/LandingPageInformation';
 
 export const LandingPage = () => {
