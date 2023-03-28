@@ -17,7 +17,7 @@ export const LoginPage = () => {
     const password = passwordRef.current?.value;
     const hashPass = createHash('sha256').update(password!).digest('hex');
     const fetchConfiguration: IFetchParams = {
-      url: `${process.env.API_URL}/api/v1/photos/authenticate`,
+      url: `${process.env.API_URL}/api/v1/authenticate`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: { username, hashPass }
