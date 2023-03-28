@@ -1,7 +1,7 @@
 'use client';
 export interface ApiPhoto {
   _id: string;
-  photo: string;
+  photo: Blob;
   text: string;
   title: string;
 }
