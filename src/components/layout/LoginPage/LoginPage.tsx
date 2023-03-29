@@ -1,36 +1,10 @@
 'use client';
-import { createHash } from 'crypto';
-import { IFetchParams, useFetch } from 'hooks/useFetch';
 import Link from 'next/link';
-import React, { useRef } from 'react';
 import LoginStyles from './LoginPage.module.css';
+import { useLoginPage } from './useLoginPage';
 
 export const LoginPage = () => {
-  const { fetcher, fetchingStatus, response } = useFetch();
-
-  const loginFormRef = useRef(null);
-  const usernameRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
-
-  const logInHandler = () => {
-    const username = usernameRef.current?.value;
-    const password = passwordRef.current?.value;
-    const hashPass = createHash('sha256').update(password!).digest('hex');
-    const fetchConfiguration: IFetchParams = {
-      url: `${process.env.API_URL}/api/v1/authenticate`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: { username, hashPass }
-    };
-
-    fetcher(fetchConfiguration);
-
-    console.log('fetchingStatus', fetchingStatus);
-    console.log('response', response);
-  };
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
+  const { fetchingStatus, logInHandler, loginFormRef, passwordRef, response, submitHandler, usernameRef } = useLoginPage();
 
   return (
     <div className={LoginStyles.container}>
