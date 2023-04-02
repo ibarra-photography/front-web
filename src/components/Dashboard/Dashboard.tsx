@@ -1,6 +1,11 @@
-import { IFetchParams, useFetch } from 'hooks/useFetch';
-import { redirect } from 'next/navigation';
 import React, { useEffect } from 'react';
+import { redirect } from 'next/navigation';
+
+import { IFetchParams, useFetch } from 'hooks/useFetch';
+
+import UploadImage from './UploadImage';
+
+import DashboardStyles from './Dashboard.module.css';
 
 interface IProps {
   user: string;
@@ -29,11 +34,11 @@ export const Dashboard = ({ user }: IProps) => {
   console.log('fetchingStatus', fetchingStatus);
 
   return (
-    <div>
-      <h1>{user}</h1>
+    <div className={DashboardStyles.container}>
+      <h1>Hello {user}</h1>
       <div>
         {fetchingStatus === 'loading' ? <p>loading...</p> : null}
-        {fetchingStatus === 'succeeded' ? <p>Dashboard: {response?.user}</p> : null}
+        {fetchingStatus === 'succeeded' ? <UploadImage user={response?.user || ''} /> : null}
       </div>
     </div>
   );
