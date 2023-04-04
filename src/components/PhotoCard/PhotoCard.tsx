@@ -13,17 +13,15 @@ interface Props {
 }
 
 export const PhotoCard = ({ link, title, description }: Props) => {
-  // const blob = b64toBlob(link);
-  const src = window.URL.createObjectURL(link);
-
-  // const src = '';
+  const srcBs64 = `data:image/jpeg;base64,${link}`;
 
   const myLoader: ImageLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 100}`;
   };
   return (
     <div aria-label="image" className="container">
-      <Image className="image" loader={myLoader} src={src} alt={description} width={200} height={200} />
+      {/* <Image className="image" loader={myLoader} src={srcBs64} alt={description} width={200} height={200} /> */}
+      <img className="image" src={srcBs64} />
     </div>
   );
 };
