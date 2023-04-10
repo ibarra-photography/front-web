@@ -7,6 +7,9 @@ import NavigationStyles from './Navigation.module.css';
 export const Navigation = () => {
   return (
     <nav className={NavigationStyles.navigationContainer}>
+      <Link className={NavigationStyles.link} href={'/'}>
+        Home
+      </Link>
       <Link className={NavigationStyles.link} href={'/gallery'}>
         Gallery
       </Link>
