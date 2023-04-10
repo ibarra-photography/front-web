@@ -6,6 +6,7 @@ import { IFetchParams, useFetch } from 'hooks/useFetch';
 import UploadImage from './UploadImage';
 
 import DashboardStyles from './Dashboard.module.css';
+import Link from 'next/link';
 
 interface IProps {
   user: string;
@@ -30,12 +31,22 @@ export const Dashboard = ({ user }: IProps) => {
     fetcher(validateSettings);
   }, []);
 
+  const logOutHandler = () => {
+    window.localStorage.setItem('token', '');
+    redirect('/login');
+  };
+
   if (fetchingStatus === 'succeeded' && !response?.isValid) redirect('/login');
-  console.log('fetchingStatus', fetchingStatus);
 
   return (
     <div className={DashboardStyles.container}>
-      <h1>Hello {user}</h1>
+      <div className={DashboardStyles.header}>
+        <h1>Hello {user}</h1>
+
+        <Link href={'/login'} onClick={logOutHandler}>
+          Log out
+        </Link>
+      </div>
       <div>
         {fetchingStatus === 'loading' ? <p>loading...</p> : null}
         {fetchingStatus === 'succeeded' ? <UploadImage user={response?.user || ''} /> : null}

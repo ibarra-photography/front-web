@@ -1,3 +1,12 @@
 .container {
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
