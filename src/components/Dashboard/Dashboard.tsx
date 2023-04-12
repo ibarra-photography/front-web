@@ -7,6 +7,7 @@ import UploadImage from './UploadImage';
 
 import DashboardStyles from './Dashboard.module.css';
 import Link from 'next/link';
+import GenerateInvitation from './GenerateInvitation';
 
 interface IProps {
   user: string;
@@ -50,6 +51,7 @@ export const Dashboard = ({ user }: IProps) => {
       <div>
         {fetchingStatus === 'loading' ? <p>loading...</p> : null}
         {fetchingStatus === 'succeeded' ? <UploadImage user={response?.user || ''} /> : null}
+        {fetchingStatus === 'succeeded' ? <GenerateInvitation user={response?.user || ''} /> : null}
       </div>
     </div>
   );
