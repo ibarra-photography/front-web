@@ -29,3 +29,28 @@
   width: 100%;
   justify-content: flex-end;
 }
+
+.navigation {
+  display: flex;
+  gap: 1rem;
+}
+
+.errorMessage {
+  color: red;
+  position: absolute;
+  transform: translateY(11rem);
+  opacity: 0;
+  animation: fadeOut 4s ease-in-out;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

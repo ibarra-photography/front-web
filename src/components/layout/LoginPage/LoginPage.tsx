@@ -18,11 +18,14 @@ export const LoginPage = () => {
           <label>Password</label>
           <input type="password" placeholder="Password" ref={passwordRef} />
         </span>
+        {fetchingStatus !== 'loading' && response?.response.status == 401 ? (
+          <p className={LoginStyles.errorMessage}>Invalid Username or Password</p>
+        ) : null}
         <div className={LoginStyles.buttonContainer}>
           <button onClick={logInHandler}>Log in</button>
         </div>
       </form>
-      <div>
+      <div className={LoginStyles.navigation}>
         <Link href={'/'}>Home</Link>
         <Link href={'/sign-in/wait-list'}>Sign in</Link>
       </div>
