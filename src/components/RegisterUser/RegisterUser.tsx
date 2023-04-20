@@ -44,6 +44,12 @@ export const RegisterUser = () => {
     const isEmailCorrect = isEmailValid(email);
     const isInvitationNumberNumber = isNumeric(invitationNumber);
 
+    if (!isPasswordMatching) confirmPasswordRef.current!.style.border = 'solid 1px red';
+
+    if (!isInvitationNumberNumber) invitationNumberRef.current!.style.border = 'solid 1px red';
+
+    if (!isEmailCorrect) emailRef.current!.style.border = 'solid 1px red';
+
     if (username && invitationNumber && isPasswordMatching && isInvitationNumberNumber && email && isEmailCorrect) {
       const registerUserRequest: RegisterUserSettings = {
         email,
@@ -59,7 +65,6 @@ export const RegisterUser = () => {
       };
       fetcher(fetchConfiguration);
     } else {
-      debugger;
       console.log('Error');
     }
   };
@@ -75,23 +80,23 @@ export const RegisterUser = () => {
       <form className={RegisterStyles.form} ref={loginFormRef} onSubmit={submitHandler}>
         <span className={RegisterStyles.inputContainer}>
           <label>Username</label>
-          <input type="text" placeholder="john@example.com / John007" ref={usernameRef} />
+          <input type="text" placeholder="john@example.com / John007" ref={usernameRef} required />
         </span>
         <span className={RegisterStyles.inputContainer}>
           <label>Email</label>
-          <input type="text" placeholder="john@example.com / John007" ref={emailRef} />
+          <input type="text" placeholder="john@example.com / John007" ref={emailRef} required />
         </span>
         <span className={RegisterStyles.inputContainer}>
           <label>Password</label>
-          <input type="password" placeholder="Password" ref={passwordRef} />
+          <input type="password" placeholder="Password" ref={passwordRef} required />
         </span>
         <span className={RegisterStyles.inputContainer}>
           <label>Confirm Password</label>
-          <input type="password" placeholder="Password" ref={confirmPasswordRef} />
+          <input type="password" placeholder="Password" ref={confirmPasswordRef} required />
         </span>
         <span className={RegisterStyles.inputContainer}>
           <label>Invitation number</label>
-          <input type="text" placeholder="012345" ref={invitationNumberRef} />
+          <input type="text" placeholder="012345" ref={invitationNumberRef} required />
         </span>
 
         <div className={RegisterStyles.buttonContainer}>
