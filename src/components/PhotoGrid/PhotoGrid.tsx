@@ -9,7 +9,7 @@ export const PhotoGrid = () => {
   return (
     <PhotoGridStyles.Container>
       {fetchingStatus === 'succeeded' &&
-        photoData.map(({ _id, photo, text, title }) => <PhotoCard key={_id} description={text} link={photo} title={title} />)}
+        photoData.map(({ _id, photo, text, title }) => <PhotoCard key={_id} id={_id} description={text} link={photo} title={title} />)}
       {fetchingStatus === 'loading' && <p>Loading...</p>}
     </PhotoGridStyles.Container>
   );

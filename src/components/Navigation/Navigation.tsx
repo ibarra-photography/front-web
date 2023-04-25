@@ -10,7 +10,7 @@ export const Navigation = () => {
       <Link className={NavigationStyles.link} href={'/'}>
         Home
       </Link>
-      <Link className={NavigationStyles.link} href={'/gallery'}>
+      <Link className={NavigationStyles.link} href={'/gallery/1'}>
         Gallery
       </Link>
       <Link className={NavigationStyles.link} href={'/login'}>
