@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { redirect } from 'next/navigation';
 
 import { IFetchParams, useFetch } from 'hooks/useFetch';
 
-import UploadImage from './UploadImage';
+const UploadImage = lazy(() => import('./UploadImage'));
 
 import DashboardStyles from './Dashboard.module.css';
 import Link from 'next/link';
 import GenerateInvitation from './GenerateInvitation';
 import RegisterUser from 'components/RegisterUser';
+import SuspenseFallback from 'components/SuspenseFallback';
 
 interface IProps {
   user: string;
@@ -50,8 +51,16 @@ export const Dashboard = ({ user }: IProps) => {
       </div>
       <div className={DashboardStyles.modulesContainer}>
         {fetchingStatus === 'loading' ? <p>loading...</p> : null}
-        {fetchingStatus === 'succeeded' ? <UploadImage user={response?.user || ''} /> : null}
-        {fetchingStatus === 'succeeded' ? <RegisterUser /> : null}
+        {fetchingStatus === 'succeeded' ? (
+          <Suspense fallback={<SuspenseFallback />}>
+            <UploadImage user={response?.user || ''} />
+          </Suspense>
+        ) : null}
+        {fetchingStatus === 'succeeded' ? (
+          <Suspense fallback={<p>Loading...</p>}>
+            <RegisterUser />
+          </Suspense>
+        ) : null}
         {fetchingStatus === 'succeeded' ? <GenerateInvitation user={response?.user || ''} /> : null}
       </div>
     </div>
