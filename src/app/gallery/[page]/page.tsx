@@ -1,10 +1,15 @@
 import { GalleryPage } from 'components/layout/GalleryPage/GalleryPage';
+import SuspenseFallback from 'components/SuspenseFallback';
+import { Suspense } from 'react';
 
 interface IParams {
   params: { page: string };
 }
 
 export default function Home({ params }: IParams) {
-  console.log(params.page);
-  return <GalleryPage page={params.page} />;
+  return (
+    <Suspense fallback={<SuspenseFallback />}>
+      <GalleryPage page={params.page} />;
+    </Suspense>
+  );
 }
