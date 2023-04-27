@@ -13,10 +13,12 @@
 }
 
 .information {
+  text-indent: 1em;
   flex: 4;
   text-align: justify;
   padding: 1rem 3rem;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
+  font-size: 0.9rem;
 }
 
 .news {
