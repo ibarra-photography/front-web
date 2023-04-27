@@ -1,0 +1,19 @@
+{
+  "title": "Register for Exclusive Access",
+  "subtitle": "Be the First to Know When Registration Opens",
+  "description": "Register now to be the first to know when we open up registration for our exclusive photography community. Enter your email below and we'll notify you as soon as registration becomes available.",
+  "form": {
+    "action": "/register",
+    "method": "POST",
+    "inputs": [
+      {
+        "label": "Email Address",
+        "type": "email",
+        "name": "email",
+        "placeholder": "Enter your email address",
+        "required": true
+      }
+    ],
+    "submit": "Register Now"
+  }
+}

@@ -2,16 +2,19 @@ import Navigation from 'components/Navigation';
 import Link from 'next/link';
 import WaitListStyles from './WaitList.module.css';
 
+import registerText from 'domain/texts/waitLists/register/register.json';
+
 export const WaitList = () => {
   return (
     <div className={WaitListStyles.container}>
-      <h1>Join the Wait list</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, voluptate. Possimus quis nostrum dolorum qui libero,</p>
+      <h1>{registerText.title}</h1>
+      <h2>{registerText.subtitle}</h2>
+      <p>{registerText.description}</p>
       <form className={WaitListStyles.form}>
-        <label htmlFor="">E mail</label>
-        <input type="email" placeholder="John@example.com" />
+        <label htmlFor="">{registerText.form.inputs[0].label}</label>
+        <input type="email" placeholder={registerText.form.inputs[0].placeholder} />
         <div className={WaitListStyles.submitContainer}>
-          <button>Send</button>
+          <button>{registerText.form.submit}</button>
         </div>
       </form>
       <Link href={'/'}> Go to home page</Link>
