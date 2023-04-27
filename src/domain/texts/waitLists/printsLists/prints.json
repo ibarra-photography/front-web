@@ -1,0 +1,25 @@
+{
+  "title": "Printings Notify List",
+  "subtitle": "Be the First to Know When Our Limited Edition Prints Are Available",
+  "description": "Sign up for our printings notify list to receive updates on our latest limited edition prints. Enter your name and email below and we'll notify you as soon as new prints become available.",
+  "form": {
+    "action": "/notify",
+    "method": "POST",
+    "inputs": [
+      {
+        "label": "Name (optional)",
+        "type": "text",
+        "name": "Name",
+        "placeholder": "Enter your name"
+      },
+      {
+        "label": "Email Address",
+        "type": "email",
+        "name": "Email",
+        "placeholder": "Enter your email address",
+        "required": true
+      }
+    ],
+    "submit": "Notify Me"
+  }
+}

@@ -2,19 +2,21 @@ import React from 'react';
 
 import PrintsNotifyMeStyles from './PrintsNotifyMe.module.css';
 
+import printsText from 'domain/texts/waitLists/printsLists/prints.json';
+
 export const PrintsNotifyMe = () => {
   return (
     <div className={PrintsNotifyMeStyles.container}>
-      <h1 className={PrintsNotifyMeStyles.title}>Prints available soon!</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos autem iusto commodi blanditiis, ipsam, ratione placeat voluptatem, rerum ex</p>
+      <h1 className={PrintsNotifyMeStyles.title}>{printsText.title}</h1>
+      <p className={PrintsNotifyMeStyles.description}> {printsText.description}</p>
       <form className={PrintsNotifyMeStyles.form}>
-        <span>
-          <label htmlFor="">Name</label>
-          <input type="text" placeholder="John" />
+        <span className={PrintsNotifyMeStyles.input}>
+          <label htmlFor="">{printsText.form.inputs[0].name}</label>
+          <input type="text" placeholder={printsText.form.inputs[0].placeholder} />
         </span>
-        <span>
-          <label htmlFor="">Email</label>
-          <input type="email" placeholder="john@example.com" />
+        <span className={PrintsNotifyMeStyles.input}>
+          <label htmlFor="">{printsText.form.inputs[1].name}</label>
+          <input type="email" placeholder={printsText.form.inputs[1].placeholder} />
         </span>
       </form>
     </div>
