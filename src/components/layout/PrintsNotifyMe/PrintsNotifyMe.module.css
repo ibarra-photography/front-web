@@ -38,3 +38,8 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.submitButton {
+  width: 50%;
+  align-self: flex-end;
+}
