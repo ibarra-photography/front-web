@@ -6,6 +6,16 @@
   padding: 1rem;
   padding-top: 15vh;
 }
+.paragraph {
+  text-indent: 1rem;
+  width: 60%;
+  text-align: justify;
+}
+.navigationContainer {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
 
 .form {
   max-width: 20rem;
@@ -24,9 +34,19 @@
 .form label {
   font-size: 1.5rem;
 }
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 
 .submitContainer {
   display: flex;
   width: 100%;
   justify-content: flex-end;
+}
+
+.submitButton {
+  width: 50%;
+  align-self: flex-end;
 }

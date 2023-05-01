@@ -12,6 +12,13 @@
         "name": "email",
         "placeholder": "Enter your email address",
         "required": true
+      },
+      {
+        "label": "Name",
+        "type": "name",
+        "name": "name",
+        "placeholder": "Enter your name (optional)",
+        "required": false
       }
     ],
     "submit": "Register Now"
