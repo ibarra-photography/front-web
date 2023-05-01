@@ -5,6 +5,7 @@ import PrintsNotifyMeStyles from './PrintsNotifyMe.module.css';
 import printsText from 'domain/texts/waitLists/printsLists/prints.json';
 import { IFetchParams, useFetch } from 'hooks/useFetch';
 import Toast from 'components/Toast';
+import Navigation from 'components/Navigation';
 
 export const PrintsNotifyMe = () => {
   const { fetcher, fetchingStatus, response } = useFetch<string>();
@@ -30,6 +31,9 @@ export const PrintsNotifyMe = () => {
 
   return (
     <div className={PrintsNotifyMeStyles.container}>
+      <div className={PrintsNotifyMeStyles.navigationContainer}>
+        <Navigation />
+      </div>
       <h1 className={PrintsNotifyMeStyles.title}>{printsText.title}</h1>
       <p className={PrintsNotifyMeStyles.description}> {printsText.description}</p>
       <form onSubmit={submitHandler} className={PrintsNotifyMeStyles.form}>

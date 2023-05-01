@@ -11,6 +11,12 @@
   padding-top: 10%;
 }
 
+.navigationContainer {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
 .title {
   font-size: 4rem;
 }
