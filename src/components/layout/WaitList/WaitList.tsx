@@ -7,7 +7,7 @@ import { IFetchParams, useFetch } from 'hooks/useFetch';
 import Toast from 'components/Toast';
 
 export const WaitList = () => {
-  const { fetcher, fetchingStatus, response } = useFetch<string>();
+  const { fetcher, fetchingStatus } = useFetch<string>();
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
