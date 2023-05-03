@@ -10,7 +10,7 @@ interface IParams {
 export default function Home({ params }: IParams) {
   return (
     <Suspense fallback={<GallerySuspense />}>
-      <GalleryPage page={params.page} />;
+      <GalleryPage page={params.page} />
     </Suspense>
   );
 }
