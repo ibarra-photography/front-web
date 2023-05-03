@@ -30,9 +30,10 @@
   justify-content: flex-end;
 }
 
-.navigation {
-  display: flex;
-  gap: 1rem;
+.navigationContainer {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
 }
 
 .errorMessage {

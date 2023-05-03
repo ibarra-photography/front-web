@@ -1,4 +1,5 @@
 'use client';
+import Navigation from 'components/Navigation';
 import Link from 'next/link';
 import LoginStyles from './LoginPage.module.css';
 import { useLoginPage } from './useLoginPage';
@@ -9,6 +10,9 @@ export const LoginPage = () => {
   return (
     <div className={LoginStyles.container}>
       <h1>Login</h1>
+      <div className={LoginStyles.navigationContainer}>
+        <Navigation />
+      </div>
       <form className={LoginStyles.form} ref={loginFormRef} onSubmit={submitHandler}>
         <span>
           <label>Username or email</label>
@@ -25,10 +29,6 @@ export const LoginPage = () => {
           <button onClick={logInHandler}>Log in</button>
         </div>
       </form>
-      <div className={LoginStyles.navigation}>
-        <Link href={'/'}>Home</Link>
-        <Link href={'/sign-in/wait-list'}>Sign in</Link>
-      </div>
     </div>
   );
 };
