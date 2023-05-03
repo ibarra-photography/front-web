@@ -28,3 +28,9 @@
   width: 100%;
   gap: 1rem;
 }
+@media only screen and (max-width: 767px) {
+  .header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

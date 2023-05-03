@@ -1,7 +1,5 @@
 import React, { use } from 'react';
 
-import { redirect } from 'next/navigation';
-
 import PhotoCard from 'components/PhotoCard';
 
 import { ApiPhoto } from 'domain/Models/Photo/ApiPhoto';
