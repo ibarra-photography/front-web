@@ -29,3 +29,14 @@
   position: absolute;
   bottom: 1rem;
 }
+@media only screen and (max-width: 767px) {
+  .photoPage {
+    flex-direction: column;
+  }
+  /* .image {
+    height: auto;
+  }
+  .imageContainer {
+    display: flex;
+  } */
+}

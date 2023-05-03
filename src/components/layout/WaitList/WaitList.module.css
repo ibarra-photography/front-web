@@ -50,3 +50,9 @@
   width: 50%;
   align-self: flex-end;
 }
+@media only screen and (max-width: 767px) {
+  .paragraph {
+    width: 100%;
+    padding: 0 1rem 0 1rem;
+  }
+}
