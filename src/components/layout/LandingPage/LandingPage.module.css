@@ -16,9 +16,10 @@
 }
 
 .title {
-  padding: 3rem 0 0 3rem;
+  margin: 3rem 0 0 3rem;
   position: absolute;
-  padding-right: 33%;
+  margin-right: 33%;
+
   font-size: 6.5rem;
   z-index: 10;
   background-image: linear-gradient(
