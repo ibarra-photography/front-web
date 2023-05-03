@@ -14,7 +14,7 @@
 .navigationContainer {
   position: absolute;
   top: 2rem;
-  left: 2rem;
+  right: 2rem;
 }
 
 .form {
