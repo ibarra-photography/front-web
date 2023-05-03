@@ -1,5 +1,5 @@
-import React from 'react';
+import SuspenseStyles from './SuspenseFallback.module.css';
 
 export const SuspenseFallback = () => {
-  return <div>Loading ...</div>;
+  return <span className={SuspenseStyles.loader}></span>;
 };
