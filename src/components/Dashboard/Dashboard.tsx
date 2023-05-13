@@ -10,6 +10,7 @@ import Link from 'next/link';
 import GenerateInvitation from './GenerateInvitation';
 import RegisterUser from 'components/RegisterUser';
 import SuspenseFallback from 'components/SuspenseFallback';
+import InvitationsTable from './InvitationsTable';
 
 interface IProps {
   user: string;
@@ -62,6 +63,11 @@ export const Dashboard = ({ user }: IProps) => {
           </Suspense>
         ) : null}
         {fetchingStatus === 'succeeded' ? <GenerateInvitation user={response?.user || ''} /> : null}
+        {fetchingStatus === 'succeeded' ? (
+          <Suspense fallback={<p>Loading</p>}>
+            <InvitationsTable />
+          </Suspense>
+        ) : null}
       </div>
     </div>
   );
