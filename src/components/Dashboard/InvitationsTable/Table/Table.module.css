@@ -1,0 +1,12 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rowEven {
+  background-image: linear-gradient(to right top, #252527, #2a2a2b, #2f2f30, #343434, #393939);
+}
+
+.rowOdd {
+  background-image: linear-gradient(to right top, #59595b, #38383a, #474749, #4a4949, #555454);
+}
