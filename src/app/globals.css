@@ -40,6 +40,12 @@ button {
   background-color: #f2f2f2;
 }
 
+th,
+td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
 /* html {
   background-color: #f2f2f2;
   color: #020202;
