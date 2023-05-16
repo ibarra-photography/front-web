@@ -2,7 +2,7 @@ import { IFetchParams, useFetch } from 'hooks/useFetch';
 import React, { useEffect } from 'react';
 import Table from './Table/Table';
 
-interface Invitation extends Record<string, unknown> {
+interface Invitation extends Record<string, string | boolean | number> {
   generationDate: string;
   invitedBy: string;
   isValid: boolean;
