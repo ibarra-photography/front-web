@@ -25,7 +25,7 @@ const Table = <T extends Record<string, number | string | boolean>>({ data, colu
       </thead>
       <tbody>
         {data.map((row, rowIndex) => (
-          <tr key={Math.random()} className={rowIndex % 2 === 0 ? styles.rowEven : styles.rowOdd}>
+          <tr key={String(row + Math.random().toString())} className={rowIndex % 2 === 0 ? styles.rowEven : styles.rowOdd}>
             {columns.map(({ key, render }) => (
               <td key={String(key)}>{render ? render(row[key]) : row[key]}</td>
             ))}

@@ -47,5 +47,5 @@ export const InvitationsTable = () => {
     return () => {};
   }, []);
 
-  return <div>{fetchingStatus !== 'loading' && response?.invitations && <Table columns={columns} data={response?.invitations!} />}</div>;
+  return <div>{fetchingStatus !== 'loading' && response?.invitations && <Table columns={columns} data={response.invitations} />}</div>;
 };
