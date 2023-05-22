@@ -24,9 +24,9 @@ export const PhotoPage = ({ photoId }: Props) => {
   return (
     <div className={photoStyles.photoPage}>
       <div></div>
-      <div className={photoStyles.imageContainer}>
+      <Link href={`/gallery/photo/${photoId}/full-photo`} className={photoStyles.imageContainer}>
         <img className={photoStyles.image} src={srcBs64} />
-      </div>
+      </Link>
       <div className={photoStyles.informationContainer}>
         <Navigation />
         <h1>{title}</h1>
