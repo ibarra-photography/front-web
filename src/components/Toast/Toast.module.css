@@ -17,6 +17,11 @@
   display: block;
 }
 
+.error {
+  background-color: rgba(181, 57, 57, 0.3);
+  border-color: rgba(61, 15, 15, 0.582);
+}
+
 @keyframes appearLeft {
   0% {
     transform: translateX(100%);
