@@ -1,6 +1,6 @@
 'use client';
 import Navigation from 'components/Navigation';
-import Link from 'next/link';
+import Toast from 'components/Toast';
 import LoginStyles from './LoginPage.module.css';
 import { useLoginPage } from './useLoginPage';
 
@@ -23,10 +23,12 @@ export const LoginPage = () => {
           <input type="password" placeholder="Password" ref={passwordRef} />
         </span>
         {fetchingStatus !== 'loading' && response?.response.status == 401 ? (
-          <p className={LoginStyles.errorMessage}>Invalid Username or Password</p>
+          <Toast styles="error">
+            <p>Invalid Username or Password</p>
+          </Toast>
         ) : null}
         <div className={LoginStyles.buttonContainer}>
-          <button onClick={logInHandler}>Log in</button>
+          {fetchingStatus === 'loading' ? <p>Login...</p> : <button onClick={logInHandler}>Log in</button>}
         </div>
       </form>
     </div>
