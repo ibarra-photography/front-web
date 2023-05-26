@@ -4,6 +4,7 @@ import Navigation from 'components/Navigation';
 import SuspenseFallback from 'components/SuspenseFallback';
 
 import GalleryStyles from './GalleryPage.module.css';
+import GallerySkeleton from './GallerySkeleton';
 
 export const GallerySuspense = () => {
   return (
@@ -12,7 +13,7 @@ export const GallerySuspense = () => {
         <h2 className={GalleryStyles.title}>Gallery</h2>
         <Navigation />
       </div>
-      <SuspenseFallback />
+      <GallerySkeleton />
     </div>
   );
 };

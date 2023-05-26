@@ -1,0 +1,19 @@
+.photoCardSkeleton {
+  height: 300px;
+  width: 300px;
+  display: block;
+  /* box-shadow: 10px 10px 25px 0px rgba(213, 207, 207, 0.64); */
+  border-radius: 1px;
+  border: 1px solid rgba(213, 207, 207, 0.1.5);
+  animation: skeletonAnimation 1.5s ease-in-out infinite;
+  background: linear-gradient(90deg, rgba(213, 207, 207, 0.205) 25%, rgba(224, 224, 224, 0.3) 50%, rgba(213, 207, 207, 0.205) 75%);
+}
+
+@keyframes skeletonAnimation {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
