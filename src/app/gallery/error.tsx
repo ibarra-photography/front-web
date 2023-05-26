@@ -15,7 +15,7 @@ export default function GalleryErrorPage() {
         <h2>Some thing went wrong on loading the gallery</h2>
         <p>Try reloading it ot visit the page later</p>
         <p>If the error persists contact to incidents@ibarraphoto.me</p>
-        <Link href={'/gallery'}>Try to reload</Link>
+        <Link href={'/gallery/1'}>Try to reload</Link>
       </div>
     </div>
   );
