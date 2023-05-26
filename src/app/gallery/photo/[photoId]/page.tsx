@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { PhotoPage } from 'components/layout/PhotoPage/PhotoPage';
 
 import SuspenseFallback from 'components/SuspenseFallback';
+import PhotoPageSkeleton from 'components/layout/PhotoPage/PhotoPageSkeleton';
 
 interface IParams {
   params: { photoId: string };
@@ -10,7 +11,7 @@ interface IParams {
 
 export default function Photo({ params }: IParams) {
   return (
-    <Suspense fallback={<SuspenseFallback />}>
+    <Suspense fallback={<PhotoPageSkeleton />}>
       <PhotoPage photoId={params.photoId} />
     </Suspense>
   );
