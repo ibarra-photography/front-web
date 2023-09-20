@@ -13,3 +13,17 @@
   border-radius: 1px;
   box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.64);
 }
+
+.container:hover {
+  scale: 1.02;
+  animation: 0.3 make-bigger ease;
+}
+
+@keyframes make-bigger {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.02;
+  }
+}
