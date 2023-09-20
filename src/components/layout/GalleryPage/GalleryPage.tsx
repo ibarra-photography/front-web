@@ -37,7 +37,7 @@ export const GalleryPage = ({ page }: Props) => {
     <div className={GalleryStyles.page}>
       <div className={GalleryStyles.header}>
         <h2 className={GalleryStyles.title}>Gallery</h2>
-        <Navigation />
+        <Navigation page="gallery" />
       </div>
       <div className={GalleryStyles.container}>
         {photos ? photos.map(({ _id, photo, text, title }) => <PhotoCard key={_id} id={_id} description={text} link={photo} title={title} />) : null}

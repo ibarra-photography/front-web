@@ -4,19 +4,25 @@ import Link from 'next/link';
 
 import NavigationStyles from './Navigation.module.css';
 
-export const Navigation = () => {
+type Page = 'home' | 'gallery' | 'login' | 'sign-in';
+interface Props {
+  page?: Page;
+}
+
+export const Navigation = ({ page }: Props) => {
+  const currentPage = page ? page : '';
   return (
     <nav className={NavigationStyles.navigationContainer}>
-      <Link className={NavigationStyles.link} href={'/'}>
+      <Link className={currentPage === 'home' ? NavigationStyles.active : NavigationStyles.link} href={'/'}>
         Home
       </Link>
-      <Link className={NavigationStyles.link} href={'/gallery/1'}>
+      <Link className={currentPage === 'gallery' ? NavigationStyles.active : NavigationStyles.link} href={'/gallery/1'}>
         Gallery
       </Link>
-      <Link className={NavigationStyles.link} href={'/login'}>
+      <Link className={currentPage === 'login' ? NavigationStyles.active : NavigationStyles.link} href={'/login'}>
         Login
       </Link>
-      <Link className={NavigationStyles.link} href={'/sign-in/wait-list'}>
+      <Link className={currentPage === 'sign-in' ? NavigationStyles.active : NavigationStyles.link} href={'/sign-in/wait-list'}>
         SignIn
       </Link>
     </nav>

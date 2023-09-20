@@ -11,7 +11,7 @@ export const LoginPage = () => {
     <div className={LoginStyles.container}>
       <h1>Login</h1>
       <div className={LoginStyles.navigationContainer}>
-        <Navigation />
+        <Navigation page="login" />
       </div>
       <form className={LoginStyles.form} ref={loginFormRef} onSubmit={submitHandler}>
         <span>

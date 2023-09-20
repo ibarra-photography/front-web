@@ -14,7 +14,7 @@ export function LandingPageInformation() {
   return (
     <div className={LandingPageInformationStyles.informationContainer}>
       <nav className={LandingPageInformationStyles.navigationContainer}>
-        <Navigation />
+        <Navigation page="home" />
       </nav>
       <div>
         {homePageTexts.description.map(description => (
