@@ -13,10 +13,7 @@ import homePageTexts from 'domain/texts/homePage/homePage.json';
 export function LandingPageInformation() {
   return (
     <div className={LandingPageInformationStyles.informationContainer}>
-      <nav className={LandingPageInformationStyles.navigationContainer}>
-        <Navigation page="home" />
-      </nav>
-      <div>
+      <div className={LandingPageInformationStyles.descriptionContainer}>
         {homePageTexts.description.map(description => (
           <p className={LandingPageInformationStyles.information}>{description}</p>
         ))}
@@ -28,10 +25,6 @@ export function LandingPageInformation() {
           Notify me
         </Link>
       </h3>
-      <p className={LandingPageInformationStyles.socialMedia}>
-        <SocialMedia />
-      </p>
-      <p className={LandingPageInformationStyles.rights}>© ibarra_photography 2023</p>
     </div>
   );
 }

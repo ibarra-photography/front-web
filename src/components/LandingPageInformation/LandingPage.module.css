@@ -1,11 +1,20 @@
 .informationContainer {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding-top: 5rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
   gap: 2rem;
   color: white;
   height: 100%;
   overflow-y: scroll;
+}
+
+.descriptionContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
 }
 
 .navigationContainer {
@@ -29,7 +38,7 @@
   align-items: center;
   font-weight: 400;
   gap: 3px;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .notifyMe {
