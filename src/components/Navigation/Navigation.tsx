@@ -22,9 +22,6 @@ export const Navigation = ({ page }: Props) => {
       <Link className={currentPage === 'login' ? NavigationStyles.active : NavigationStyles.link} href={'/login'}>
         Login
       </Link>
-      <Link className={currentPage === 'sign-in' ? NavigationStyles.active : NavigationStyles.link} href={'/sign-in/wait-list'}>
-        SignIn
-      </Link>
     </nav>
   );
 };
