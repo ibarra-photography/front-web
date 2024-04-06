@@ -1,81 +1,40 @@
-.landingPageWrapper {
-  display: flex;
-  width: 100%;
+.landingPageWrapper{
+  position:relative 
+}
+.heroSection{
   height: 100vh;
 }
 
 .imageContainer {
-  flex: 2;
-  overflow: hidden;
-  position: relative;
+  height: 100vh;
+
 }
 
 .landingImage {
-  overflow: hidden;
   object-fit: cover;
+  aspect-ratio: 16/9;
+  height: 100vh;
+  width: 100%;
+}
+
+.titleContainer{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 2rem;
+  padding-bottom: 4rem;
+  align-items: center;
+  position: absolute;
+  display: grid;
+  top: 0;
+}
+.navigation{
+  grid-column-start: 4;
 }
 
 .title {
-  margin: 3rem 0 0 3rem;
-  position: absolute;
-  margin-right: 33%;
-
-  font-size: 6.5rem;
-  z-index: 10;
-  background-image: linear-gradient(
-    0deg,
-    hsl(33deg 81% 63%) 0%,
-    hsl(32deg 81% 67%) 17%,
-    hsl(32deg 81% 71%) 31%,
-    hsl(31deg 81% 74%) 41%,
-    hsl(30deg 80% 78%) 47%,
-    hsl(30deg 77% 81%) 52%,
-    hsl(29deg 71% 84%) 57%,
-    hsl(29deg 61% 88%) 66%,
-    hsl(28deg 42% 91%) 81%,
-    hsl(0deg 0% 94%) 100%
-  );
-
-  /* background-image: linear-gradient(
-    0deg,
-    hsl(240deg 1% 68%) 0%,
-    hsl(240deg 1% 71%) 17%,
-    hsl(240deg 1% 74%) 31%,
-    hsl(240deg 1% 77%) 41%,
-    hsl(240deg 1% 79%) 47%,
-    hsl(240deg 1% 82%) 52%,
-    hsl(240deg 1% 85%) 57%,
-    hsl(240deg 1% 88%) 66%,
-    hsl(240deg 1% 91%) 81%,
-    hsl(0deg 0% 94%) 100%
-  ); */
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
+  font-weight: 200;
+  font-size: 3rem;
 }
 
-.informationContainer {
-  flex: 1;
-  background-image: linear-gradient(to right top, #252527, #2a2a2b, #2f2f30, #343434, #393939);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
 
 @media only screen and (max-width: 767px) {
-  .imageContainer {
-    display: none;
-  }
-  .title {
-    display: block;
-    position: absolute;
-    top: 2rem;
-
-    width: 100vw;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    z-index: 100;
-    font-size: 2.5rem;
-  }
 }
