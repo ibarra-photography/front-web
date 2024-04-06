@@ -23,7 +23,7 @@ export const PhotoCard = ({ link, title, description, id }: Props) => {
   };
 
   return (
-    <Link href={`gallery/photo/${id}`} aria-label="image" className="container">
+    <Link href={`photo/${id}`} aria-label="image" className="container">
       <img className="image" src={srcBs64} />
     </Link>
   );
