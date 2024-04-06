@@ -55,3 +55,11 @@
   font-size: 0.7rem;
   text-align: center;
 }
+@media only screen and (max-width: 767px) {
+  .informationContainer{
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+    padding: 0.3rem;
+    padding-top: 1rem;
+
+  }
+}
