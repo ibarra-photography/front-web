@@ -5,6 +5,7 @@
   gap: 3rem;
   padding: 1rem;
   padding-top: 15vh;
+  min-height: 100vh;
 }
 .paragraph {
   text-indent: 1rem;
