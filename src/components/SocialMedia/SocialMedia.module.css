@@ -6,3 +6,17 @@
   flex: 1;
   height: 100%;
 }
+
+.icon:hover {
+  scale: 1.1;
+  animation: 0.2s make-bigger ease;
+}
+
+@keyframes make-bigger {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.1;
+  }
+}

@@ -8,17 +8,17 @@ import SocialMediaStyles from './SocialMedia.module.css';
 export const SocialMedia = () => {
   return (
     <div className={SocialMediaStyles.socialMediaContainer}>
-      <div>
+      <div className={SocialMediaStyles.icon}>
         <Link href={'https://www.instagram.com/ibarra__photography/'} target="_blank" rel="noopener noreferrer">
           <FaInstagram />
         </Link>
       </div>
-      <div>
+      <div className={SocialMediaStyles.icon}>
         <Link href={'https://twitter.com/ibarra_photo'} target="_blank" rel="noopener noreferrer">
           <FaTwitter />
         </Link>
       </div>
-      <div>
+      <div className={SocialMediaStyles.icon}>
         <Link href={'/'}>
           <FaTelegram />
         </Link>
