@@ -3,6 +3,10 @@ import { Suspense } from 'react';
 import { GalleryPage } from 'components/layout/GalleryPage/GalleryPage';
 import { GallerySuspense } from 'components/layout/GalleryPage/GallerySuspense';
 
+export async function generateStaticParams() {
+  return [1, 2];
+}
+
 interface IParams {
   params: { page: string };
 }
